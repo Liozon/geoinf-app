@@ -17,7 +17,7 @@
          target: 'map',
          layers: [
              new ol.layer.Group({
-                 'title': 'Cartes de fond',
+                 'title': 'Cartes',
                  layers: [
                      new ol.layer.Group({
                          title: 'Aquarelle avec étiquettes',
@@ -65,6 +65,18 @@
              new ol.layer.Group({
                  title: 'Couches',
                  layers: [
+                    new ol.layer.Image({
+                        title: 'Cadastre',
+                        source: new ol.source.ImageWMS({
+                            ratio: 1,
+                            url: mapURL,
+                            params: {
+                                VERSION: "1.0.0",
+                                LAYERS: "ch.kantone.cadastralwebmap-farbe",
+                                FORMAT: "image/png"
+                            }
+                        })
+                    }),
                      new ol.layer.Image({
                          title: 'Réserves naturelles',
                          source: new ol.source.ImageWMS({
@@ -94,7 +106,7 @@
          ],
          view: new ol.View({
              center: ol.proj.transform([8.2, 46.8], 'EPSG:4326', 'EPSG:3857'),
-             zoom: 9
+             zoom: 8.5
          })
      });
 
