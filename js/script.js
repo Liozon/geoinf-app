@@ -105,12 +105,39 @@
                      new ol.layer.Vector({
                          title: 'Aéroports',
                          visible: false,
+                         style: new ol.style.Style({
+                             fill: new ol.style.Fill({
+                                 color: [255, 0, 0, 0.4],
+                                 width: 2
+                             }),
+                         }),
                          source: new ol.source.Vector({
                              projection: 'EPSG:4326',
                              url: 'data/airports.geojson',
-                             format: new ol.format.GeoJSON(),
+                             format: new ol.format.GeoJSON()
                          })
-                     })
+                     }),
+                     new ol.layer.Vector({
+                         title: 'Aéroports 5km',
+                         visible: true,
+                         style: new ol.style.Style({
+                             image: new ol.style.Circle({
+                                 radius: 50,
+                                 fill: new ol.style.Fill({
+                                     color: [255, 255, 255, 0.3]
+                                 }),
+                                 stroke: new ol.style.Stroke({
+                                     color: '#cb1d1d',
+                                     width: 2
+                                 })
+                             })
+                         }),
+                         source: new ol.source.Vector({
+                             projection: 'EPSG:4326',
+                             url: 'data/airports_centerpoint.geojson',
+                             format: new ol.format.GeoJSON()
+                         })
+                     }),
                  ]
              })
          ],
