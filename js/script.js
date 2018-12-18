@@ -1,6 +1,6 @@
 var mapURL = 'https://wms.geo.admin.ch';
 
-(function() {
+(function () {
     var map = new ol.Map({
         target: 'map',
         layers: [
@@ -39,7 +39,7 @@ var mapURL = 'https://wms.geo.admin.ch';
                         visible: false,
                         source: new ol.source.BingMaps({
                             imagerySet: 'AerialWithLabels',
-                            key: 'AkHVW_WXt2nAK7HzcN7FAYn5OoAqGub21o8IpwCN6z7WGAIey6eAR8ODJ-4p56aU '
+                            key: 'AkHVW_WXt2nAK7HzcN7FAYn5OoAqGub21o8IpwCN6z7WGAIey6eAR8ODJ-4p56aU'
                         })
                     }),
                     new ol.layer.Tile({

@@ -22,7 +22,7 @@ export default class LayerSwitcher extends Control {
 
         var element = document.createElement('div');
 
-        super({element: element, target: options.target});
+        super({ element: element, target: options.target });
 
         this.mapListeners = [];
 
@@ -45,17 +45,17 @@ export default class LayerSwitcher extends Control {
 
         var this_ = this;
 
-        button.onmouseover = function(e) {
+        button.onmouseover = function (e) {
             this_.showPanel();
         };
 
-        button.onclick = function(e) {
+        button.onclick = function (e) {
             e = e || window.event;
             this_.showPanel();
             e.preventDefault();
         };
 
-        this_.panel.onmouseout = function(e) {
+        this_.panel.onmouseout = function (e) {
             e = e || window.event;
             if (!this_.panel.contains(e.toElement || e.relatedTarget)) {
                 this_.hidePanel();
@@ -78,7 +78,7 @@ export default class LayerSwitcher extends Control {
         super.setMap(map);
         if (map) {
             var this_ = this;
-            this.mapListeners.push(map.on('pointerdown', function() {
+            this.mapListeners.push(map.on('pointerdown', function () {
                 this_.hidePanel();
             }));
             this.renderPanel();
@@ -120,7 +120,7 @@ export default class LayerSwitcher extends Control {
 
         LayerSwitcher.ensureTopVisibleBaseLayerShown_(map);
 
-        while(panel.firstChild) {
+        while (panel.firstChild) {
             panel.removeChild(panel.firstChild);
         }
 
@@ -138,7 +138,7 @@ export default class LayerSwitcher extends Control {
     */
     static ensureTopVisibleBaseLayerShown_(map) {
         var lastVisibleBaseLyr;
-        LayerSwitcher.forEachRecursive(map, function(l, idx, a) {
+        LayerSwitcher.forEachRecursive(map, function (l, idx, a) {
             if (l.get('type') === 'base' && l.getVisible()) {
                 lastVisibleBaseLyr = l;
             }
@@ -158,7 +158,7 @@ export default class LayerSwitcher extends Control {
         lyr.setVisible(visible);
         if (visible && lyr.get('type') === 'base') {
             // Hide all other base layers regardless of grouping
-            LayerSwitcher.forEachRecursive(map, function(l, idx, a) {
+            LayerSwitcher.forEachRecursive(map, function (l, idx, a) {
                 if (l != lyr && l.get('type') === 'base') {
                     l.setVisible(false);
                 }
@@ -188,11 +188,11 @@ export default class LayerSwitcher extends Control {
 
             // Group folding
             if (lyr.get('fold')) {
-              li.classList.add(CSS_PREFIX + 'fold');
-              li.classList.add(CSS_PREFIX + lyr.get('fold'));
-              label.onclick = function (e) {
-                LayerSwitcher.toggleFold_(lyr, li);
-              };
+                li.classList.add(CSS_PREFIX + 'fold');
+                li.classList.add(CSS_PREFIX + lyr.get('fold'));
+                label.onclick = function (e) {
+                    LayerSwitcher.toggleFold_(lyr, li);
+                };
             }
 
             label.innerHTML = lyrTitle;
@@ -214,7 +214,7 @@ export default class LayerSwitcher extends Control {
             }
             input.id = lyrId;
             input.checked = lyr.get('visible');
-            input.onchange = function(e) {
+            input.onchange = function (e) {
                 LayerSwitcher.setVisible_(map, lyr, e.target.checked);
             };
             li.appendChild(input);
@@ -223,7 +223,7 @@ export default class LayerSwitcher extends Control {
             label.innerHTML = lyrTitle;
 
             var rsl = map.getView().getResolution();
-            if (rsl > lyr.getMaxResolution() || rsl < lyr.getMinResolution()){
+            if (rsl > lyr.getMaxResolution() || rsl < lyr.getMinResolution()) {
                 label.className += ' disabled';
             }
 
@@ -260,7 +260,7 @@ export default class LayerSwitcher extends Control {
     * found under `lyr`. The signature for `fn` is the same as `ol.Collection#forEach`
     */
     static forEachRecursive(lyr, fn) {
-        lyr.getLayers().forEach(function(lyr, idx, a) {
+        lyr.getLayers().forEach(function (lyr, idx, a) {
             fn(lyr, idx, a);
             if (lyr.getLayers) {
                 LayerSwitcher.forEachRecursive(lyr, fn);
@@ -274,8 +274,8 @@ export default class LayerSwitcher extends Control {
     * @returns {String} UUID
     */
     static uuid() {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
     }
@@ -286,12 +286,12 @@ export default class LayerSwitcher extends Control {
     * element. Adapted from https://gist.github.com/chrismbarr/4107472
     */
     static enableTouchScroll_(elm) {
-        if(LayerSwitcher.isTouchDevice_()){
+        if (LayerSwitcher.isTouchDevice_()) {
             var scrollStartPos = 0;
-            elm.addEventListener("touchstart", function(event) {
+            elm.addEventListener("touchstart", function (event) {
                 scrollStartPos = this.scrollTop + event.touches[0].pageY;
             }, false);
-            elm.addEventListener("touchmove", function(event) {
+            elm.addEventListener("touchmove", function (event) {
                 this.scrollTop = scrollStartPos - event.touches[0].pageY;
             }, false);
         }
@@ -306,7 +306,7 @@ export default class LayerSwitcher extends Control {
         try {
             document.createEvent("TouchEvent");
             return true;
-        } catch(e) {
+        } catch (e) {
             return false;
         }
     }
@@ -316,7 +316,7 @@ export default class LayerSwitcher extends Control {
     */
     static toggleFold_(lyr, li) {
         li.classList.remove(CSS_PREFIX + lyr.get('fold'));
-        lyr.set('fold', (lyr.get('fold')==='open') ? 'close' : 'open');
+        lyr.set('fold', (lyr.get('fold') === 'open') ? 'close' : 'open');
         li.classList.add(CSS_PREFIX + lyr.get('fold'));
     }
 
