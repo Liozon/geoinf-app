@@ -9,7 +9,7 @@
  var mapURL = 'https://wms.geo.admin.ch';
 
  (function () {
-    $('input[type=checkbox]').removeAttr('checked');
+     $('input[type=checkbox]').removeAttr('checked');
      on();
      var map = new ol.Map({
          target: 'map',
@@ -100,6 +100,15 @@
                                  LAYERS: "ch.vbs.sachplan-infrastruktur-militaer_kraft",
                                  FORMAT: "image/png"
                              }
+                         })
+                     }),
+                     new ol.layer.Vector({
+                         title: 'Aéroports',
+                         visible: false,
+                         source: new ol.source.Vector({
+                             projection: 'EPSG:4326',
+                             url: 'data/airports.geojson',
+                             format: new ol.format.GeoJSON(),
                          })
                      })
                  ]
