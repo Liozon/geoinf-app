@@ -1,8 +1,5 @@
  function on() {
      document.getElementById("overlay").style.display = "block";
-     setTimeout(function () {
-         $("#overlay").fadeOut(300);
-     }, 2000);
  }
 
  function off() {
@@ -12,6 +9,7 @@
  var mapURL = 'https://wms.geo.admin.ch';
 
  (function () {
+    $('input[type=checkbox]').removeAttr('checked');
      on();
      var map = new ol.Map({
          target: 'map',
@@ -65,20 +63,22 @@
              new ol.layer.Group({
                  title: 'Couches',
                  layers: [
-                    new ol.layer.Image({
-                        title: 'Cadastre',
-                        source: new ol.source.ImageWMS({
-                            ratio: 1,
-                            url: mapURL,
-                            params: {
-                                VERSION: "1.0.0",
-                                LAYERS: "ch.kantone.cadastralwebmap-farbe",
-                                FORMAT: "image/png"
-                            }
-                        })
-                    }),
+                     new ol.layer.Image({
+                         title: 'Cadastre',
+                         visible: false,
+                         source: new ol.source.ImageWMS({
+                             ratio: 1,
+                             url: mapURL,
+                             params: {
+                                 VERSION: "1.0.0",
+                                 LAYERS: "ch.kantone.cadastralwebmap-farbe",
+                                 FORMAT: "image/png"
+                             }
+                         })
+                     }),
                      new ol.layer.Image({
                          title: 'Réserves naturelles',
+                         visible: false,
                          source: new ol.source.ImageWMS({
                              ratio: 1,
                              url: mapURL,
@@ -91,6 +91,7 @@
                      }),
                      new ol.layer.Image({
                          title: 'Casernes militaires',
+                         visible: false,
                          source: new ol.source.ImageWMS({
                              ratio: 1,
                              url: mapURL,
