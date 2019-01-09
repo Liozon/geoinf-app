@@ -119,7 +119,7 @@
                      }),
                      new ol.layer.Vector({
                          title: 'Aéroports 5km',
-                         visible: true,
+                         visible: false,
                          style: new ol.style.Style({
                              image: new ol.style.Circle({
                                  radius: 50,
@@ -138,6 +138,7 @@
                              format: new ol.format.GeoJSON()
                          })
                      }),
+                     // cartoDB: https://carto.com/developers/data-services-api/reference/
                  ]
              })
          ],
