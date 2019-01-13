@@ -165,7 +165,8 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
         ],
         view: new ol.View({
             center: ol.proj.transform([8.2, 46.8], 'EPSG:4326', 'EPSG:3857'),
-            zoom: 8.5
+            zoom: 8.5,
+            minZoom: 8.5
         })
     });
 
