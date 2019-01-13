@@ -111,6 +111,9 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
                         title: 'Cantons',
                         visible: true,
                         style: new ol.style.Style({
+                            fill: new ol.style.Fill({
+                                color: [255, 255, 255, 0]
+                            }),
                             stroke: new ol.style.Stroke({
                                 color: '#4C4CFF',
                                 width: 5
@@ -144,8 +147,11 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
                         style: new ol.style.Style({
                             fill: new ol.style.Fill({
                                 color: [255, 255, 255, 0.8],
-                                width: 2
                             }),
+                            stroke: new ol.style.Stroke({
+                                color: [0, 0, 0],
+                                width: 2
+                            })
                         }),
                         source: new ol.source.Vector({
                             projection: 'EPSG:4326',
