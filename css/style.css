@@ -45,21 +45,9 @@ a.link:active {
   color: blue;
 }
 
-a:link {
-  color: rgb(192, 192, 192);
-}
-
-/* visited link */
-a:visited {
-  color: rgb(192, 192, 192);
-}
-
-/* mouse over link */
-a:hover {
-  color: rgb(192, 192, 192);
-}
-
-/* selected link */
+a:link,
+a:visited,
+a:hover,
 a:active {
   color: rgb(192, 192, 192);
 }
