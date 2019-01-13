@@ -9,11 +9,10 @@ body {
 
 #info {
   display: none;
-  font-size: 15px;
   position: absolute;
   top: 20px;
   left: 60px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
   border: solid gray 1px;
   padding: 5px;
   font-size: smaller;
@@ -22,6 +21,7 @@ body {
 
 #info table p {
   font-size: 15px;
+  font-family: Roboto;
 }
 
 #overlay {
@@ -36,6 +36,32 @@ body {
   background-color: rgba(19, 19, 19, 0.76);
   z-index: 2;
   cursor: pointer;
+}
+
+a.link:link,
+a.link:visited,
+a.link:hover,
+a.link:active {
+  color: blue;
+}
+
+a:link {
+  color: rgb(192, 192, 192);
+}
+
+/* visited link */
+a:visited {
+  color: rgb(192, 192, 192);
+}
+
+/* mouse over link */
+a:hover {
+  color: rgb(192, 192, 192);
+}
+
+/* selected link */
+a:active {
+  color: rgb(192, 192, 192);
 }
 
 #text {

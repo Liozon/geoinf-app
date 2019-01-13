@@ -22,7 +22,10 @@ export default class LayerSwitcher extends Control {
 
         var element = document.createElement('div');
 
-        super({ element: element, target: options.target });
+        super({
+            element: element,
+            target: options.target
+        });
 
         this.mapListeners = [];
 
@@ -65,9 +68,9 @@ export default class LayerSwitcher extends Control {
     }
 
     /**
-    * Set the map instance the control is associated with.
-    * @param {ol.Map} map The map instance.
-    */
+     * Set the map instance the control is associated with.
+     * @param {ol.Map} map The map instance.
+     */
     setMap(map) {
         // Clean up listeners associated with the previous map
         for (var i = 0, key; i < this.mapListeners.length; i++) {
@@ -86,8 +89,8 @@ export default class LayerSwitcher extends Control {
     }
 
     /**
-    * Show the layer panel.
-    */
+     * Show the layer panel.
+     */
     showPanel() {
         if (!this.element.classList.contains(this.shownClassName)) {
             this.element.classList.add(this.shownClassName);
@@ -96,8 +99,8 @@ export default class LayerSwitcher extends Control {
     }
 
     /**
-    * Hide the layer panel.
-    */
+     * Hide the layer panel.
+     */
     hidePanel() {
         if (this.element.classList.contains(this.shownClassName)) {
             this.element.classList.remove(this.shownClassName);
@@ -105,17 +108,17 @@ export default class LayerSwitcher extends Control {
     }
 
     /**
-    * Re-draw the layer panel to represent the current state of the layers.
-    */
+     * Re-draw the layer panel to represent the current state of the layers.
+     */
     renderPanel() {
         LayerSwitcher.renderPanel(this.getMap(), this.panel);
     }
 
     /**
-    * **Static** Re-draw the layer panel to represent the current state of the layers.
-    * @param {ol.Map} map The OpenLayers Map instance to render layers for
-    * @param {Element} panel The DOM Element into which the layer tree will be rendered
-    */
+     * **Static** Re-draw the layer panel to represent the current state of the layers.
+     * @param {ol.Map} map The OpenLayers Map instance to render layers for
+     * @param {Element} panel The DOM Element into which the layer tree will be rendered
+     */
     static renderPanel(map, panel) {
 
         LayerSwitcher.ensureTopVisibleBaseLayerShown_(map);
@@ -132,10 +135,10 @@ export default class LayerSwitcher extends Control {
     }
 
     /**
-    * **Static** Ensure only the top-most base layer is visible if more than one is visible.
-    * @param {ol.Map} map The map instance.
-    * @private
-    */
+     * **Static** Ensure only the top-most base layer is visible if more than one is visible.
+     * @param {ol.Map} map The map instance.
+     * @private
+     */
     static ensureTopVisibleBaseLayerShown_(map) {
         var lastVisibleBaseLyr;
         LayerSwitcher.forEachRecursive(map, function (l, idx, a) {
@@ -147,13 +150,13 @@ export default class LayerSwitcher extends Control {
     }
 
     /**
-    * **Static** Toggle the visible state of a layer.
-    * Takes care of hiding other layers in the same exclusive group if the layer
-    * is toggle to visible.
-    * @private
-    * @param {ol.Map} map The map instance.
-    * @param {ol.layer.Base} The layer whos visibility will be toggled.
-    */
+     * **Static** Toggle the visible state of a layer.
+     * Takes care of hiding other layers in the same exclusive group if the layer
+     * is toggle to visible.
+     * @private
+     * @param {ol.Map} map The map instance.
+     * @param {ol.layer.Base} The layer whos visibility will be toggled.
+     */
     static setVisible_(map, lyr, visible) {
         lyr.setVisible(visible);
         if (visible && lyr.get('type') === 'base') {
@@ -167,12 +170,12 @@ export default class LayerSwitcher extends Control {
     }
 
     /**
-    * **Static** Render all layers that are children of a group.
-    * @private
-    * @param {ol.Map} map The map instance.
-    * @param {ol.layer.Base} lyr Layer to be rendered (should have a title property).
-    * @param {Number} idx Position in parent group list.
-    */
+     * **Static** Render all layers that are children of a group.
+     * @private
+     * @param {ol.Map} map The map instance.
+     * @param {ol.layer.Base} lyr Layer to be rendered (should have a title property).
+     * @param {Number} idx Position in parent group list.
+     */
     static renderLayer_(map, lyr, idx) {
 
         var li = document.createElement('li');
@@ -236,12 +239,12 @@ export default class LayerSwitcher extends Control {
     }
 
     /**
-    * **Static** Render all layers that are children of a group.
-    * @private
-    * @param {ol.Map} map The map instance.
-    * @param {ol.layer.Group} lyr Group layer whos children will be rendered.
-    * @param {Element} elm DOM element that children will be appended to.
-    */
+     * **Static** Render all layers that are children of a group.
+     * @private
+     * @param {ol.Map} map The map instance.
+     * @param {ol.layer.Group} lyr Group layer whos children will be rendered.
+     * @param {Element} elm DOM element that children will be appended to.
+     */
     static renderLayers_(map, lyr, elm) {
         var lyrs = lyr.getLayers().getArray().slice().reverse();
         for (var i = 0, l; i < lyrs.length; i++) {
@@ -253,12 +256,12 @@ export default class LayerSwitcher extends Control {
     }
 
     /**
-    * **Static** Call the supplied function for each layer in the passed layer group
-    * recursing nested groups.
-    * @param {ol.layer.Group} lyr The layer group to start iterating from.
-    * @param {Function} fn Callback which will be called for each `ol.layer.Base`
-    * found under `lyr`. The signature for `fn` is the same as `ol.Collection#forEach`
-    */
+     * **Static** Call the supplied function for each layer in the passed layer group
+     * recursing nested groups.
+     * @param {ol.layer.Group} lyr The layer group to start iterating from.
+     * @param {Function} fn Callback which will be called for each `ol.layer.Base`
+     * found under `lyr`. The signature for `fn` is the same as `ol.Collection#forEach`
+     */
     static forEachRecursive(lyr, fn) {
         lyr.getLayers().forEach(function (lyr, idx, a) {
             fn(lyr, idx, a);
@@ -269,22 +272,23 @@ export default class LayerSwitcher extends Control {
     }
 
     /**
-    * **Static** Generate a UUID  
-    * Adapted from http://stackoverflow.com/a/2117523/526860
-    * @returns {String} UUID
-    */
+     * **Static** Generate a UUID  
+     * Adapted from http://stackoverflow.com/a/2117523/526860
+     * @returns {String} UUID
+     */
     static uuid() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+            var r = Math.random() * 16 | 0,
+                v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
     }
 
     /**
-    * @private
-    * @desc Apply workaround to enable scrolling of overflowing content within an
-    * element. Adapted from https://gist.github.com/chrismbarr/4107472
-    */
+     * @private
+     * @desc Apply workaround to enable scrolling of overflowing content within an
+     * element. Adapted from https://gist.github.com/chrismbarr/4107472
+     */
     static enableTouchScroll_(elm) {
         if (LayerSwitcher.isTouchDevice_()) {
             var scrollStartPos = 0;
@@ -298,10 +302,10 @@ export default class LayerSwitcher extends Control {
     }
 
     /**
-    * @private
-    * @desc Determine if the current browser supports touch events. Adapted from
-    * https://gist.github.com/chrismbarr/4107472
-    */
+     * @private
+     * @desc Determine if the current browser supports touch events. Adapted from
+     * https://gist.github.com/chrismbarr/4107472
+     */
     static isTouchDevice_() {
         try {
             document.createEvent("TouchEvent");
@@ -312,8 +316,8 @@ export default class LayerSwitcher extends Control {
     }
 
     /**
-    * Fold/unfold layer group
-    */
+     * Fold/unfold layer group
+     */
     static toggleFold_(lyr, li) {
         li.classList.remove(CSS_PREFIX + lyr.get('fold'));
         lyr.set('fold', (lyr.get('fold') === 'open') ? 'close' : 'open');
