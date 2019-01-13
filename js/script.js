@@ -188,6 +188,7 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
             var restrictionLink = e.selected[0].get("link_f");
             var cantonName = e.selected[0].get("name");
             var airportName = e.selected[0].get("airport_name");
+            var airportCanton = e.selected[0].get("canton_name");
 
             if (restrictionName) {
                 $("#info").empty();
@@ -200,7 +201,7 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
             } else if (airportName) {
                 $("#info").empty();
                 $("#info").html("<table id='table'></table>");
-                $("#table").html("<p>Aéroport de " + airportName + "</p>");
+                $("#table").html("<p>Aéroport de " + airportName + ", canton de " + airportCanton + "</p>");
             }
 
 
