@@ -4,9 +4,14 @@
 
  function off() {
      document.getElementById("overlay").style.display = "none";
+     document.getElementById("info").style.display = "block";
  }
 
  var mapURL = 'https://wms.geo.admin.ch';
+
+ // Définitions pour CartoDB
+ var format = "GeoJSON";
+ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
 
  (function () {
      $('input[type=checkbox]').removeAttr('checked');
@@ -103,41 +108,51 @@
                          })
                      }),
                      new ol.layer.Vector({
-                         title: 'Aéroports',
-                         visible: false,
+                         title: 'Cantons',
+                         visible: true,
+                         style: new ol.style.Style({
+                             stroke: new ol.style.Stroke({
+                                 color: '#4C4CFF',
+                                 width: 5
+                             })
+                         }),
+                         source: new ol.source.Vector({
+                             url: "https://liozon.carto.com/api/v2/sql?q=select*from%20limites_des_cantons&format=" + format + "&api_key=" + key,
+                             format: new ol.format.GeoJSON()
+                         })
+                     }),
+                     new ol.layer.Vector({
+                         title: 'Zones interdites de vol',
+                         visible: true,
                          style: new ol.style.Style({
                              fill: new ol.style.Fill({
-                                 color: [255, 0, 0, 0.4],
+                                 color: [255, 153, 153, 0.5]
+                             }),
+                             stroke: new ol.style.Stroke({
+                                 color: '#cb1d1d',
+                                 width: 2
+                             })
+                         }),
+                         source: new ol.source.Vector({
+                             url: "https://liozon.carto.com/api/v2/sql?q=select*from%20carte_de_restrictions&format=" + format + "&api_key=" + key,
+                             format: new ol.format.GeoJSON()
+                         })
+                     }),
+                     new ol.layer.Vector({
+                         title: 'Aéroports',
+                         visible: true,
+                         style: new ol.style.Style({
+                             fill: new ol.style.Fill({
+                                 color: [255, 255, 255, 0.8],
                                  width: 2
                              }),
                          }),
                          source: new ol.source.Vector({
                              projection: 'EPSG:4326',
-                             url: 'data/airports.geojson',
+                             url: "https://liozon.carto.com/api/v2/sql?q=select*from%20airports&format=" + format + "&api_key=" + key,
                              format: new ol.format.GeoJSON()
                          })
-                     }),
-                     new ol.layer.Vector({
-                         title: 'Aéroports 5km',
-                         visible: false,
-                         style: new ol.style.Style({
-                             image: new ol.style.Circle({
-                                 radius: 50,
-                                 fill: new ol.style.Fill({
-                                     color: [255, 255, 255, 0.3]
-                                 }),
-                                 stroke: new ol.style.Stroke({
-                                     color: '#cb1d1d',
-                                     width: 2
-                                 })
-                             })
-                         }),
-                         source: new ol.source.Vector({
-                             projection: 'EPSG:4326',
-                             url: 'data/airports_centerpoint.geojson',
-                             format: new ol.format.GeoJSON()
-                         })
-                     }),
+                     })
                      // cartoDB: https://carto.com/developers/data-services-api/reference/
                  ]
              })
@@ -152,5 +167,41 @@
          tipLabel: 'Légende' // Optional label for button
      });
      map.addControl(layerSwitcher);
+
+     // Gestion des interractions
+     var selectInteraction = new ol.interaction.Select({
+         condition: ol.events.condition.singleClick
+     });
+     map.addInteraction(selectInteraction);
+
+     selectInteraction.on('select', function (e) {
+         if (e.selected.length > 0) {
+             var restrictionName = e.selected[0].get("name_f");
+             var restrictionType = e.selected[0].get("restr_f");
+             var restrictionAuth = e.selected[0].get("appro_f");
+             var restrictionLink = e.selected[0].get("link_f");
+             var cantonName = e.selected[0].get("name");
+             var airportName = e.selected[0].get("airport_name");
+
+             if (restrictionName) {
+                 $("#info").empty();
+                 $("#info").html("<table id='table'></table>");
+                 $("#table").html("<p>Nom: " + restrictionName + "\n</p><p>Restriction: " + restrictionType + "</p><p>Autorisations: " + restrictionAuth + "</p><p><a href=" + restrictionLink + " target='_blank'>Site Web</a></p>");
+             } else if (cantonName) {
+                 $("#info").empty();
+                 $("#info").html("<table id='table'></table>");
+                 $("#table").html("<p>Canton de " + cantonName + "</p>");
+             } else if (airportName) {
+                 $("#info").empty();
+                 $("#info").html("<table id='table'></table>");
+                 $("#table").html("<p>Aéroport de " + airportName + "</p>");
+             }
+
+
+         } else {
+             $("#info").empty();
+             $("#info").html("Cliquez sur des éléments de la carte pour obtenir des informations");
+         }
+     })
 
  })();

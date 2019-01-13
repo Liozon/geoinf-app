@@ -7,6 +7,23 @@ body {
   font-size: small;
 }
 
+#info {
+  display: none;
+  font-size: 15px;
+  position: absolute;
+  top: 20px;
+  left: 60px;
+  background-color: white;
+  border: solid gray 1px;
+  padding: 5px;
+  font-size: smaller;
+  z-index: 1000000000;
+}
+
+#info table p {
+  font-size: 15px;
+}
+
 #overlay {
   position: fixed;
   display: none;
@@ -21,17 +38,17 @@ body {
   cursor: pointer;
 }
 
-#text{
+#text {
   position: absolute;
   top: 30%;
   left: 50%;
   font-size: 50px;
   color: white;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 
-#subtext{
+#subtext {
   position: absolute;
   margin-top: 70px;
   margin-bottom: 20px;
@@ -39,8 +56,8 @@ body {
   left: 50%;
   font-size: 25px;
   color: white;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }
 
 #map {
