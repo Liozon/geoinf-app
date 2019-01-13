@@ -188,20 +188,21 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
             var restrictionLink = e.selected[0].get("link_f");
             var cantonName = e.selected[0].get("name");
             var airportName = e.selected[0].get("airport_name");
+            var airportType = e.selected[0].get("type");
             var airportCanton = e.selected[0].get("canton_name");
 
             if (restrictionName) {
-                $("#info").empty();
+                //$("#info").empty();
                 $("#info").html("<table id='table'></table>");
                 $("#table").html("<p>Nom: " + restrictionName + "\n</p><p>Restriction: " + restrictionType + "</p><p>Autorisations: " + restrictionAuth + "</p><p><a href=" + restrictionLink + " target='_blank' class='link'>Site Web</a></p>");
             } else if (cantonName) {
-                $("#info").empty();
+                //$("#info").empty();
                 $("#info").html("<table id='table'></table>");
                 $("#table").html("<p>Canton de " + cantonName + "</p>");
             } else if (airportName) {
-                $("#info").empty();
+                //$("#info").empty();
                 $("#info").html("<table id='table'></table>");
-                $("#table").html("<p>Aéroport de " + airportName + ", canton de " + airportCanton + "</p>");
+                $("#table").html("<p>" + airportType + " de " + airportName + ", canton de " + airportCanton + "</p>");
             }
 
 
