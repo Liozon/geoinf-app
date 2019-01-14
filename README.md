@@ -1,9 +1,10 @@
-# Welcome to the GeoInf app !
+# Geography information application (also known as GeoInf)
 
-- [Introduction](#intro)
-- [Preview](#preview)
-- [How to install](#installation)
-- [Other](#other)
+- [Geography information application (also known as GeoInf)](#geography-information-application-also-known-as-geoinf)
+  - [Intro](#intro)
+  - [Preview](#preview)
+  - [Installation](#installation)
+  - [Other](#other)
 
 ## Intro
 
@@ -19,13 +20,13 @@ In order to run this app locally on your computer, you'll need WAMP (or equivale
 
 During the programming and tests, this is the version of WAMP and dependencies used:
 
-| Dependencies  | Version used  |
-| ------------- | ------------- |
-| WAMP for PC  | 3.1.0  |
-| Apache  | 2.4.27  |
-| phpMyAdmin  | 4.7.4  |
-| MySQL  | 5.7.19  |
-| MariaDB  | 10.2.8  |
+| Dependencies | Version used |
+| ------------ | ------------ |
+| WAMP for PC  | 3.1.0        |
+| Apache       | 2.4.27       |
+| phpMyAdmin   | 4.7.4        |
+| MySQL        | 5.7.19       |
+| MariaDB      | 10.2.8       |
 
 ## Other
 
