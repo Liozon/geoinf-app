@@ -9,7 +9,7 @@ function off() {
 
 var mapURL = 'https://wms.geo.admin.ch';
 
-// Définitions pour CartoDB
+// CartoDB/Carto.com API key and format definition
 var format = "GeoJSON";
 var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
 
@@ -159,7 +159,7 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
                             format: new ol.format.GeoJSON()
                         })
                     })
-                    // cartoDB: https://carto.com/developers/data-services-api/reference/
+                    // CartoDB API documentation: https://carto.com/developers/data-services-api/reference/
                 ]
             })
         ],
@@ -171,11 +171,11 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
     });
 
     var layerSwitcher = new ol.control.LayerSwitcher({
-        tipLabel: 'Légende' // Optional label for button
+        tipLabel: 'Légende' // Label for button
     });
     map.addControl(layerSwitcher);
 
-    // Gestion des interractions
+    // Interaction controls
     var selectInteraction = new ol.interaction.Select({
         condition: ol.events.condition.singleClick
     });
