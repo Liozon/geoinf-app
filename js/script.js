@@ -188,15 +188,6 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
         geolocation.setTracking(this.checked);
     });
 
-    // update the HTML page when the position changes.
-    geolocation.on('change', function () {
-        el('accuracy').innerText = geolocation.getAccuracy() + ' [m]';
-        el('altitude').innerText = geolocation.getAltitude() + ' [m]';
-        el('altitudeAccuracy').innerText = geolocation.getAltitudeAccuracy() + ' [m]';
-        el('heading').innerText = geolocation.getHeading() + ' [rad]';
-        el('speed').innerText = geolocation.getSpeed() + ' [m/s]';
-    });
-
     // handle geolocation error.
     geolocation.on('error', function (error) {
         var info = document.getElementById('info');
