@@ -5,6 +5,7 @@ function on() {
 function off() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("info").style.display = "block";
+    document.getElementById("tracking").style.display = "block";
 }
 
 var mapURL = 'https://wms.geo.admin.ch';
@@ -172,6 +173,7 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
 
     });
 
+    // Geolocation
     var geolocation = new ol.Geolocation({
         // enableHighAccuracy must be set to true to have the heading value.
         trackingOptions: {
@@ -188,7 +190,7 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
         geolocation.setTracking(this.checked);
     });
 
-    // handle geolocation error.
+    // Handling geolocation error.
     geolocation.on('error', function (error) {
         var info = document.getElementById('info');
         info.innerHTML = error.message;
@@ -214,10 +216,15 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
         })
     }));
 
+    // Zoom on the map to the current location
     geolocation.on('change:position', function () {
         var coordinates = geolocation.getPosition();
         positionFeature.setGeometry(coordinates ?
             new ol.geom.Point(coordinates) : null);
+        map.getView().animate({
+            center: coordinates,
+            zoom: 13
+        });
     });
 
     new ol.layer.Vector({
@@ -227,6 +234,7 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
         })
     });
 
+    // Adding the Layer switcher
     var layerSwitcher = new ol.control.LayerSwitcher({
         tipLabel: 'Légende' // Label for button
     });
