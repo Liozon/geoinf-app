@@ -14,11 +14,6 @@ var mapURL = 'https://wms.geo.admin.ch';
 var format = "GeoJSON";
 var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
 
-// Google Maps API
-searchAPI = "AIzaSyAOqYYyBbtXQEtcHG7hwAwyCPQSYidG8yU";
-
-
-
 (function () {
     $('input[type=checkbox]').removeAttr('checked');
     $('#searchbox').click(geocodage);
