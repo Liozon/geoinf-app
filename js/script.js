@@ -6,9 +6,19 @@ function off() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("info").style.display = "block";
     document.getElementById("tracking").style.display = "block";
+    document.getElementById("bloc-input").style.display = "block";
 }
 
+// Thunderforest API key
+// Backup: c70eda883a5744f398616fc2ffe26fe5
+var thunderKey = "0e6fc415256d4fbb9b5166a718591d71";
+
+// Swiss Confederation layers
 var mapURL = 'https://wms.geo.admin.ch';
+
+// Here Maps keys
+var app_id = "DemoAppId01082013GAL";
+var app_code = "AJKnXv84fjrb0KIHawS0Tg";
 
 // CartoDB/Carto.com API key and format definition
 var format = "GeoJSON";
@@ -16,11 +26,12 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
 
 (function () {
     $('input[type=checkbox]').removeAttr('checked');
+    $('#searchbox').click(geocodage);
     on();
     var view = new ol.View({
         center: ol.proj.transform([8.2, 46.8], 'EPSG:4326', 'EPSG:3857'),
         zoom: 8.5,
-        minZoom: 8.5
+        //minZoom: 8.5
     });
     var map = new ol.Map({
         target: 'map',
@@ -29,30 +40,26 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
             new ol.layer.Group({
                 'title': 'Cartes',
                 layers: [
-                    new ol.layer.Group({
-                        title: 'Aquarelle avec étiquettes',
+                    new ol.layer.Tile({
+                        title: 'OpenStreetMap',
                         type: 'base',
-                        combine: true,
                         visible: false,
-                        layers: [
-                            new ol.layer.Tile({
-                                source: new ol.source.Stamen({
-                                    layer: 'watercolor'
-                                })
-                            }),
-                            new ol.layer.Tile({
-                                source: new ol.source.Stamen({
-                                    layer: 'terrain-labels'
-                                })
-                            })
-                        ]
+                        source: new ol.source.OSM()
                     }),
                     new ol.layer.Tile({
-                        title: 'Aquarelle',
+                        title: 'Dénivelation',
                         type: 'base',
                         visible: false,
-                        source: new ol.source.Stamen({
-                            layer: 'watercolor'
+                        source: new ol.source.XYZ({
+                            url: 'https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=' + thunderKey
+                        })
+                    }),
+                    new ol.layer.Tile({
+                        title: 'Contraste élevé',
+                        type: 'base',
+                        visible: false,
+                        source: new ol.source.XYZ({
+                            url: 'https://tile.thunderforest.com/mobile-atlas/{z}/{x}/{y}.png?apikey=' + thunderKey
                         })
                     }),
                     new ol.layer.Tile({
@@ -65,10 +72,20 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
                         })
                     }),
                     new ol.layer.Tile({
-                        title: 'Carte standard',
+                        title: 'Activités extérieures',
+                        type: 'base',
+                        visible: false,
+                        source: new ol.source.XYZ({
+                            url: 'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=' + thunderKey
+                        })
+                    }),
+                    new ol.layer.Tile({
+                        title: 'Here Maps',
                         type: 'base',
                         visible: true,
-                        source: new ol.source.OSM()
+                        source: new ol.source.XYZ({
+                            url: 'https://1.base.maps.cit.api.here.com/maptile/2.1/maptile/newest/normal.day/{z}/{x}/{y}/256/png8?app_id=' + app_id + '&app_code=' + app_code
+                        })
                     })
                 ]
             }),
@@ -76,14 +93,15 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
                 title: 'Couches',
                 layers: [
                     new ol.layer.Image({
-                        title: 'Cadastre',
+                        title: 'Carte des vents',
                         visible: false,
+                        opacity: 0.7,
                         source: new ol.source.ImageWMS({
                             ratio: 1,
                             url: mapURL,
                             params: {
                                 VERSION: "1.0.0",
-                                LAYERS: "ch.kantone.cadastralwebmap-farbe",
+                                LAYERS: "ch.bfe.windenergie-geschwindigkeit_h150",
                                 FORMAT: "image/png"
                             }
                         })
@@ -165,13 +183,114 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
                             url: "https://liozon.carto.com/api/v2/sql?q=select*from%20airports&format=" + format + "&api_key=" + key,
                             format: new ol.format.GeoJSON()
                         })
-                    })
+                    }),
                     // CartoDB API documentation: https://carto.com/developers/data-services-api/reference/
                 ]
             })
-        ],
-
+        ]
     });
+
+    // Searchbox
+    function geocodage() {
+
+        var adresse = $("#adress").val();
+
+        var urlAdresse = 'https://nominatim.openstreetmap.org/search?q=' + adresse + '&format=jsonv2&bounded=1';
+
+        $.getJSON(urlAdresse, function (json) {
+            var styleVecteur = new ol.style.Style({
+                image: new ol.style.Circle({
+                    radius: 6,
+                    fill: new ol.style.Fill({
+                        color: '#3399CC'
+                    }),
+                    stroke: new ol.style.Stroke({
+                        color: '#fff',
+                        width: 2
+                    })
+                })
+            });
+            var sourceVecteur = new ol.source.Vector({});
+
+            var vecteur = new ol.layer.Vector({
+                source: sourceVecteur,
+                style: styleVecteur
+            });
+
+            map.addLayer(vecteur);
+
+            if (json != "") {
+                var latAdresse = json[0].lat;
+                var lngAdresse = json[0].lon;
+
+                var coord = [parseFloat(lngAdresse), parseFloat(latAdresse)];
+                var newcoord = ol.proj.transform(coord, 'EPSG:4326', 'EPSG:3857');
+                var locFeature = new ol.Feature({
+                    geometry: new ol.geom.Point(newcoord),
+                });
+                sourceVecteur.addFeature(locFeature);
+                map.getView().animate({
+                    center: newcoord,
+                    zoom: 13
+                });
+            } else {
+                alert('erreur : lieu introuvable ou inexistant');
+            }
+
+
+        });
+
+    }
+
+    // Data on click on the map
+    map.on('click', function (evt) {
+        var styleVecteur = new ol.style.Style({
+            image: new ol.style.Circle({
+                radius: 6,
+                fill: new ol.style.Fill({
+                    color: '#3399CC'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: '#fff',
+                    width: 2
+                })
+            })
+        });
+        var sourceVecteur = new ol.source.Vector({});
+
+        var vecteur = new ol.layer.Vector({
+            source: sourceVecteur,
+            style: styleVecteur
+        });
+
+        map.addLayer(vecteur);
+
+        var position = evt.coordinate;
+        console.log(position)
+        var newposition = ol.proj.transform(position, 'EPSG:3857', 'EPSG:4326');
+        var latitude = newposition[1];
+        var longitude = newposition[0];
+
+        var urlPosition = 'https://nominatim.openstreetmap.org/reverse?lat=' + latitude + '&lon=' + longitude + '&format=jsonv2&bounded=1';
+        console.log(urlPosition);
+        $.getJSON(urlPosition, function (json) {
+            if (json != "") {
+                var formatted_address = json.display_name;
+                var locFeature = new ol.Feature({
+                    geometry: new ol.geom.Point(position),
+                });
+                sourceVecteur.addFeature(locFeature);
+                map.getView().animate({
+                    center: position,
+                    zoom: 13
+                });
+                $("#adress").val(formatted_address);
+            } else {
+                alert('Une erreur est survenue');
+            }
+        });
+    });
+
 
     // Geolocation
     var geolocation = new ol.Geolocation({
