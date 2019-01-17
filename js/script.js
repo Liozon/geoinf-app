@@ -181,7 +181,7 @@ searchAPI = "AIzaSyAOqYYyBbtXQEtcHG7hwAwyCPQSYidG8yU";
     // Searchbox
     function geocodage() {
 
-        var adresse = $("#adresse").val();
+        var adresse = $("#adress").val();
 
         var urlAdresse = 'https://nominatim.openstreetmap.org/search?q=' + adresse + '&format=jsonv2&bounded=1';
 
@@ -230,21 +230,40 @@ searchAPI = "AIzaSyAOqYYyBbtXQEtcHG7hwAwyCPQSYidG8yU";
 
     }
 
-    // Data on click
+    // Data on click on the map
     map.on('click', function (evt) {
+        var styleVecteur = new ol.style.Style({
+            image: new ol.style.Circle({
+                radius: 6,
+                fill: new ol.style.Fill({
+                    color: '#3399CC'
+                }),
+                stroke: new ol.style.Stroke({
+                    color: '#fff',
+                    width: 2
+                })
+            })
+        });
         var sourceVecteur = new ol.source.Vector({});
+
+        var vecteur = new ol.layer.Vector({
+            source: sourceVecteur,
+            style: styleVecteur
+        });
+
+        map.addLayer(vecteur);
+
         var position = evt.coordinate;
         console.log(position)
         var newposition = ol.proj.transform(position, 'EPSG:3857', 'EPSG:4326');
         var latitude = newposition[1];
         var longitude = newposition[0];
-        // Example: https://nominatim.openstreetmap.org/reverse?format=xml&lat=52.5487429714954&lon=-1.81602098644987&zoom=18&addressdetails=1
+
         var urlPosition = 'https://nominatim.openstreetmap.org/reverse?lat=' + latitude + '&lon=' + longitude + '&format=jsonv2&bounded=1';
         console.log(urlPosition);
         $.getJSON(urlPosition, function (json) {
             if (json != "") {
                 var formatted_address = json.display_name;
-                $("#adresse").val(formatted_address);
                 var locFeature = new ol.Feature({
                     geometry: new ol.geom.Point(position),
                 });
@@ -253,6 +272,7 @@ searchAPI = "AIzaSyAOqYYyBbtXQEtcHG7hwAwyCPQSYidG8yU";
                     center: position,
                     zoom: 13
                 });
+                $("#adress").val(formatted_address);
             } else {
                 alert('Une erreur est survenue');
             }

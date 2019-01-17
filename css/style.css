@@ -7,6 +7,10 @@ body {
   font-size: small;
 }
 
+#adress {
+  width: 300px;
+}
+
 #info {
   display: none;
   position: absolute;
