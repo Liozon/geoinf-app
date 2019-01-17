@@ -1,13 +1,4 @@
-function on() {
-    document.getElementById("overlay").style.display = "block";
-}
-
-function off() {
-    document.getElementById("overlay").style.display = "none";
-    document.getElementById("info").style.display = "block";
-    document.getElementById("tracking").style.display = "block";
-    document.getElementById("bloc-input").style.display = "block";
-}
+// Julien Muggli - 2019
 
 // Thunderforest API key
 // Backup: c70eda883a5744f398616fc2ffe26fe5
@@ -255,56 +246,6 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
 
     }
 
-    // Data on click on the map
-    map.on('click', function (evt) {
-        var styleVecteur = new ol.style.Style({
-            image: new ol.style.Circle({
-                radius: 6,
-                fill: new ol.style.Fill({
-                    color: '#3399CC'
-                }),
-                stroke: new ol.style.Stroke({
-                    color: '#fff',
-                    width: 2
-                })
-            })
-        });
-        var sourceVecteur = new ol.source.Vector({});
-
-        var vecteur = new ol.layer.Vector({
-            source: sourceVecteur,
-            style: styleVecteur
-        });
-
-        map.addLayer(vecteur);
-
-        var position = evt.coordinate;
-        console.log(position)
-        var newposition = ol.proj.transform(position, 'EPSG:3857', 'EPSG:4326');
-        var latitude = newposition[1];
-        var longitude = newposition[0];
-
-        var urlPosition = 'https://nominatim.openstreetmap.org/reverse?lat=' + latitude + '&lon=' + longitude + '&format=jsonv2&bounded=1';
-        console.log(urlPosition);
-        $.getJSON(urlPosition, function (json) {
-            if (json != "") {
-                var formatted_address = json.display_name;
-                var locFeature = new ol.Feature({
-                    geometry: new ol.geom.Point(position),
-                });
-                sourceVecteur.addFeature(locFeature);
-                map.getView().animate({
-                    center: position,
-                    zoom: 13
-                });
-                $("#adress").val(formatted_address);
-            } else {
-                alert('Une erreur est survenue');
-            }
-        });
-    });
-
-
     // Geolocation
     var geolocation = new ol.Geolocation({
         // enableHighAccuracy must be set to true to have the heading value.
@@ -388,6 +329,54 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
             var airportName = e.selected[0].get("airport_name");
             var airportType = e.selected[0].get("type");
 
+            // Data on click on the map pixel
+            map.on('click', function (evt) {
+                var styleVecteur = new ol.style.Style({
+                    image: new ol.style.Circle({
+                        radius: 6,
+                        fill: new ol.style.Fill({
+                            color: '#3399CC'
+                        }),
+                        stroke: new ol.style.Stroke({
+                            color: '#fff',
+                            width: 2
+                        })
+                    })
+                });
+                var sourceVecteur = new ol.source.Vector({});
+
+                var vecteur = new ol.layer.Vector({
+                    source: sourceVecteur,
+                    style: styleVecteur
+                });
+
+                map.addLayer(vecteur);
+
+                var position = evt.coordinate;
+                var newposition = ol.proj.transform(position, 'EPSG:3857', 'EPSG:4326');
+                var latitude = newposition[1];
+                var longitude = newposition[0];
+
+                var urlPosition = 'https://nominatim.openstreetmap.org/reverse?lat=' + latitude + '&lon=' + longitude + '&format=jsonv2&bounded=1';
+                $.getJSON(urlPosition, function (json) {
+                    if (json != "") {
+                        var formatted_address = json.display_name;
+                        var locFeature = new ol.Feature({
+                            geometry: new ol.geom.Point(position),
+                        });
+                        sourceVecteur.addFeature(locFeature);
+                        map.getView().animate({
+                            center: position,
+                            zoom: 13
+                        });
+                        $("#info").empty();
+                        $("#info").html(formatted_address);
+                    } else {
+                        alert('Une erreur est survenue');
+                    }
+                });
+            });
+
             if (restrictionName) {
                 //$("#info").empty();
                 $("#info").html("<table id='table'></table>");
@@ -401,12 +390,20 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
                 $("#info").html("<table id='table'></table>");
                 $("#table").html("<p>" + airportType + " de " + airportName + "</p>");
             }
-
-
         } else {
             $("#info").empty();
             $("#info").html("Cliquez sur des éléments de la carte pour obtenir des informations");
         }
     })
-
 })();
+
+function on() {
+    document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("info").style.display = "block";
+    document.getElementById("tracking").style.display = "block";
+    document.getElementById("bloc-input").style.display = "block";
+}
