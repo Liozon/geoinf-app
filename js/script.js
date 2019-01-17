@@ -16,6 +16,9 @@ var thunderKey = "0e6fc415256d4fbb9b5166a718591d71";
 // Swiss Confederation layers
 var mapURL = 'https://wms.geo.admin.ch';
 
+// Weather layer
+var weatherKey = '9de243494c0b295cca9337e1e96b00e2';
+
 // Here Maps keys
 var app_id = "DemoAppId01082013GAL";
 var app_code = "AJKnXv84fjrb0KIHawS0Tg";
@@ -97,8 +100,24 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
                 ]
             }),
             new ol.layer.Group({
-                title: 'Couches',
+                title: 'Météorologique',
                 layers: [
+                    new ol.layer.Tile({
+                        title: 'Humidité relative',
+                        visible: false,
+                        opacity: 0.7,
+                        source: new ol.source.XYZ({
+                            url: "https://g.sat.owm.io/vane/2.0/weather/HRD0/{z}/{x}/{y}?appid=" + weatherKey
+                        })
+                    }),
+                    new ol.layer.Tile({
+                        title: 'Intensité des précipitations',
+                        visible: false,
+                        opacity: 0.7,
+                        source: new ol.source.XYZ({
+                            url: "https://g.sat.owm.io/vane/2.0/weather/PR0/{z}/{x}/{y}?appid=" + weatherKey
+                        })
+                    }),
                     new ol.layer.Image({
                         title: 'Carte des vents',
                         visible: false,
@@ -113,32 +132,19 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
                             }
                         })
                     }),
-                    new ol.layer.Image({
-                        title: 'Réserves naturelles',
+                    new ol.layer.Tile({
+                        title: 'Direction des vents',
                         visible: false,
-                        source: new ol.source.ImageWMS({
-                            ratio: 1,
-                            url: mapURL,
-                            params: {
-                                VERSION: "1.0.0",
-                                LAYERS: "ch.pronatura.naturschutzgebiete",
-                                FORMAT: "image/png"
-                            }
+                        opacity: 0.7,
+                        source: new ol.source.XYZ({
+                            url: "https://g.sat.owm.io/vane/2.0/weather/WND/{z}/{x}/{y}?appid=" + weatherKey
                         })
                     }),
-                    new ol.layer.Image({
-                        title: 'Casernes militaires',
-                        visible: false,
-                        source: new ol.source.ImageWMS({
-                            ratio: 1,
-                            url: mapURL,
-                            params: {
-                                VERSION: "1.0.0",
-                                LAYERS: "ch.vbs.sachplan-infrastruktur-militaer_kraft",
-                                FORMAT: "image/png"
-                            }
-                        })
-                    }),
+                ]
+            }),
+            new ol.layer.Group({
+                title: 'Zones interdites',
+                layers: [
                     new ol.layer.Vector({
                         title: 'Cantons',
                         visible: true,
@@ -381,7 +387,6 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
             var cantonName = e.selected[0].get("name");
             var airportName = e.selected[0].get("airport_name");
             var airportType = e.selected[0].get("type");
-            var airportCanton = e.selected[0].get("canton_name");
 
             if (restrictionName) {
                 //$("#info").empty();
@@ -394,7 +399,7 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
             } else if (airportName) {
                 //$("#info").empty();
                 $("#info").html("<table id='table'></table>");
-                $("#table").html("<p>" + airportType + " de " + airportName + ", canton de " + airportCanton + "</p>");
+                $("#table").html("<p>" + airportType + " de " + airportName + "</p>");
             }
 
 
