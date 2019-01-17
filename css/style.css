@@ -24,6 +24,15 @@ body {
   font-family: Roboto;
 }
 
+#bloc-input {
+  text-overflow: ellipsis;
+  width: 300px;
+  position: absolute;
+  top: 10px;
+  left: 40%;
+  z-index: 9999;
+}
+
 #tracking {
   display: none;
   position: absolute;

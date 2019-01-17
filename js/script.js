@@ -14,13 +14,19 @@ var mapURL = 'https://wms.geo.admin.ch';
 var format = "GeoJSON";
 var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
 
+// Google Maps API
+searchAPI = "AIzaSyAOqYYyBbtXQEtcHG7hwAwyCPQSYidG8yU";
+
+
+
 (function () {
     $('input[type=checkbox]').removeAttr('checked');
+    $('#searchbox').click(geocodage);
     on();
     var view = new ol.View({
         center: ol.proj.transform([8.2, 46.8], 'EPSG:4326', 'EPSG:3857'),
         zoom: 8.5,
-        minZoom: 8.5
+        //minZoom: 8.5
     });
     var map = new ol.Map({
         target: 'map',
@@ -165,13 +171,94 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
                             url: "https://liozon.carto.com/api/v2/sql?q=select*from%20airports&format=" + format + "&api_key=" + key,
                             format: new ol.format.GeoJSON()
                         })
-                    })
+                    }),
                     // CartoDB API documentation: https://carto.com/developers/data-services-api/reference/
                 ]
             })
-        ],
-
+        ]
     });
+
+    // Searchbox
+    function geocodage() {
+
+        var adresse = $("#adresse").val();
+
+        var urlAdresse = 'https://nominatim.openstreetmap.org/search?q=' + adresse + '&format=jsonv2&bounded=1';
+
+        $.getJSON(urlAdresse, function (json) {
+            var styleVecteur = new ol.style.Style({
+                image: new ol.style.Circle({
+                    radius: 6,
+                    fill: new ol.style.Fill({
+                        color: '#3399CC'
+                    }),
+                    stroke: new ol.style.Stroke({
+                        color: '#fff',
+                        width: 2
+                    })
+                })
+            });
+            var sourceVecteur = new ol.source.Vector({});
+
+            var vecteur = new ol.layer.Vector({
+                source: sourceVecteur,
+                style: styleVecteur
+            });
+
+            map.addLayer(vecteur);
+
+            if (json != "") {
+                var latAdresse = json[0].lat;
+                var lngAdresse = json[0].lon;
+
+                var coord = [parseFloat(lngAdresse), parseFloat(latAdresse)];
+                var newcoord = ol.proj.transform(coord, 'EPSG:4326', 'EPSG:3857');
+                var locFeature = new ol.Feature({
+                    geometry: new ol.geom.Point(newcoord),
+                });
+                sourceVecteur.addFeature(locFeature);
+                map.getView().animate({
+                    center: newcoord,
+                    zoom: 13
+                });
+            } else {
+                alert('erreur : lieu introuvable ou inexistant');
+            }
+
+
+        });
+
+    }
+
+    // Data on click
+    map.on('click', function (evt) {
+        var sourceVecteur = new ol.source.Vector({});
+        var position = evt.coordinate;
+        console.log(position)
+        var newposition = ol.proj.transform(position, 'EPSG:3857', 'EPSG:4326');
+        var latitude = newposition[1];
+        var longitude = newposition[0];
+        // Example: https://nominatim.openstreetmap.org/reverse?format=xml&lat=52.5487429714954&lon=-1.81602098644987&zoom=18&addressdetails=1
+        var urlPosition = 'https://nominatim.openstreetmap.org/reverse?lat=' + latitude + '&lon=' + longitude + '&format=jsonv2&bounded=1';
+        console.log(urlPosition);
+        $.getJSON(urlPosition, function (json) {
+            if (json != "") {
+                var formatted_address = json.display_name;
+                $("#adresse").val(formatted_address);
+                var locFeature = new ol.Feature({
+                    geometry: new ol.geom.Point(position),
+                });
+                sourceVecteur.addFeature(locFeature);
+                map.getView().animate({
+                    center: position,
+                    zoom: 13
+                });
+            } else {
+                alert('Une erreur est survenue');
+            }
+        });
+    });
+
 
     // Geolocation
     var geolocation = new ol.Geolocation({
