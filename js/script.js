@@ -26,7 +26,14 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
 
 (function () {
     $('input[type=checkbox]').removeAttr('checked');
-    $('#searchbox').click(geocodage);
+    var inputButton = document.getElementById("searchbox");
+    inputButton.addEventListener("click", geocodage);
+    var inputText = document.getElementById("adress");
+    inputText.addEventListener("keyup", function (e) {
+        if (e.keyCode === 13) {
+            geocodage();
+        }
+    });
     on();
     var view = new ol.View({
         center: ol.proj.transform([8.2, 46.8], 'EPSG:4326', 'EPSG:3857'),
