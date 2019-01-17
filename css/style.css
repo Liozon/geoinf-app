@@ -8,7 +8,8 @@ body {
 }
 
 #adress {
-  width: 300px;
+  width: 400px;
+  height: 20px;
 }
 
 #info {
@@ -29,12 +30,45 @@ body {
 }
 
 #bloc-input {
+  display: none;
   text-overflow: ellipsis;
-  width: 300px;
+  width: 400px;
   position: absolute;
   top: 10px;
   left: 40%;
   z-index: 9999;
+}
+
+input[type=text] {
+  vertical-align: bottom;
+  padding: 10px 15px;
+  border: none;
+  border-bottom: 2px solid #4CAF50;
+}
+
+.btn-success {
+  background-color: #4CAF50;
+  /* Green */
+  border: none;
+  width: 430px;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+}
+
+.btn-success:hover {
+  background-color: #4CAF50;
+  color: white;
 }
 
 #tracking {

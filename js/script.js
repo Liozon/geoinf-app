@@ -6,9 +6,19 @@ function off() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("info").style.display = "block";
     document.getElementById("tracking").style.display = "block";
+    document.getElementById("bloc-input").style.display = "block";
 }
 
+// Thunderforest API key
+// Backup: c70eda883a5744f398616fc2ffe26fe5
+var thunderKey = "0e6fc415256d4fbb9b5166a718591d71";
+
+// Swiss Confederation layers
 var mapURL = 'https://wms.geo.admin.ch';
+
+// Here Maps keys
+var app_id = "DemoAppId01082013GAL";
+var app_code = "AJKnXv84fjrb0KIHawS0Tg";
 
 // CartoDB/Carto.com API key and format definition
 var format = "GeoJSON";
@@ -30,30 +40,26 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
             new ol.layer.Group({
                 'title': 'Cartes',
                 layers: [
-                    new ol.layer.Group({
-                        title: 'Aquarelle avec étiquettes',
+                    new ol.layer.Tile({
+                        title: 'OpenStreetMap',
                         type: 'base',
-                        combine: true,
                         visible: false,
-                        layers: [
-                            new ol.layer.Tile({
-                                source: new ol.source.Stamen({
-                                    layer: 'watercolor'
-                                })
-                            }),
-                            new ol.layer.Tile({
-                                source: new ol.source.Stamen({
-                                    layer: 'terrain-labels'
-                                })
-                            })
-                        ]
+                        source: new ol.source.OSM()
                     }),
                     new ol.layer.Tile({
-                        title: 'Aquarelle',
+                        title: 'Dénivelation',
                         type: 'base',
                         visible: false,
-                        source: new ol.source.Stamen({
-                            layer: 'watercolor'
+                        source: new ol.source.XYZ({
+                            url: 'https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=' + thunderKey
+                        })
+                    }),
+                    new ol.layer.Tile({
+                        title: 'Contraste élevé',
+                        type: 'base',
+                        visible: false,
+                        source: new ol.source.XYZ({
+                            url: 'https://tile.thunderforest.com/mobile-atlas/{z}/{x}/{y}.png?apikey=' + thunderKey
                         })
                     }),
                     new ol.layer.Tile({
@@ -66,10 +72,20 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
                         })
                     }),
                     new ol.layer.Tile({
-                        title: 'Carte standard',
+                        title: 'Activités extérieures',
+                        type: 'base',
+                        visible: false,
+                        source: new ol.source.XYZ({
+                            url: 'https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=' + thunderKey
+                        })
+                    }),
+                    new ol.layer.Tile({
+                        title: 'Here Maps',
                         type: 'base',
                         visible: true,
-                        source: new ol.source.OSM()
+                        source: new ol.source.XYZ({
+                            url: 'https://1.base.maps.cit.api.here.com/maptile/2.1/maptile/newest/normal.day/{z}/{x}/{y}/256/png8?app_id=' + app_id + '&app_code=' + app_code
+                        })
                     })
                 ]
             }),
@@ -77,14 +93,15 @@ var key = "67770d5dedb2d2c4b4707425a84649c8fdc16551";
                 title: 'Couches',
                 layers: [
                     new ol.layer.Image({
-                        title: 'Cadastre',
+                        title: 'Carte des vents',
                         visible: false,
+                        opacity: 0.7,
                         source: new ol.source.ImageWMS({
                             ratio: 1,
                             url: mapURL,
                             params: {
                                 VERSION: "1.0.0",
-                                LAYERS: "ch.kantone.cadastralwebmap-farbe",
+                                LAYERS: "ch.bfe.windenergie-geschwindigkeit_h150",
                                 FORMAT: "image/png"
                             }
                         })
