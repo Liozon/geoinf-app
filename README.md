@@ -4,6 +4,7 @@
   - [Intro](#intro)
   - [Preview](#preview)
   - [Installation](#installation)
+  - [API keys](#api-keys)
   - [Other](#other)
 
 ## Intro
@@ -27,6 +28,10 @@ During the programming and tests, this is the version of WAMP and dependencies u
 | phpMyAdmin   | 4.7.4        |
 | MySQL        | 5.7.19       |
 | MariaDB      | 10.2.8       |
+
+## API keys
+
+In order to use this app and all resources, you'll need to provide your own API keys.
 
 ## Other
 
