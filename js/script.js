@@ -15,7 +15,7 @@ var format = "GeoJSON";
   });
   on();
   var view = new ol.View({
-    center: ol.proj.transform([8.2, 46.8], "EPSG:4326", "EPSG:3857"),
+    center: ol.proj.transform([8.2, 46.7], "EPSG:4326", "EPSG:3857"),
     zoom: 8.5
     //minZoom: 8.5
   });
@@ -243,7 +243,7 @@ var format = "GeoJSON";
           zoom: 13
         });
       } else {
-        alert("erreur : lieu introuvable ou inexistant");
+        alert("Erreur : lieu introuvable ou inexistant");
       }
     });
   }
