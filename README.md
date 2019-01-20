@@ -12,6 +12,7 @@
     - [High contrast](#high-contrast)
     - [Slope map](#slope-map)
     - [OpenStreetMap](#openstreetmap)
+  - [Layers presentation](#layers-presentation)
 
 ![Map view](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/map.png "Map view")
 
@@ -76,3 +77,9 @@ at the end of the HTML file, juste before the `</body>` tag.
 ### OpenStreetMap
 
 ![OpenStreetMap](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/openstreetmap.png "OpenStreetMap")
+
+## Layers presentation
+
+![Available layers](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/selection%20of%20layers.jpg "Available layers")
+
+![All layers activated](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/all%20layers.png "All layers activated")
