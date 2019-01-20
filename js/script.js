@@ -4,6 +4,7 @@
 var format = "GeoJSON";
 
 (function () {
+  //on();
   $("input[type=checkbox]").removeAttr("checked");
   var inputButton = document.getElementById("searchbox");
   inputButton.addEventListener("click", geocodage);
@@ -13,7 +14,6 @@ var format = "GeoJSON";
       geocodage();
     }
   });
-  on();
   var view = new ol.View({
     center: ol.proj.transform([8.2, 46.7], "EPSG:4326", "EPSG:3857"),
     zoom: 8.5
@@ -425,8 +425,18 @@ function on() {
 }
 
 function off() {
-  document.getElementById("overlay").style.display = "none";
+  document.getElementById("overlay").style.zIndex = "-1";
+  document.getElementById("content").style.backgroundColor = "white";
   document.getElementById("info").style.display = "block";
   document.getElementById("tracking").style.display = "block";
   document.getElementById("bloc-input").style.display = "block";
+  window.setTimeout(() => {
+    document.getElementById("overlay").remove();
+  }, 5000);
+  $('#content').unfold({
+    duration: 1500,
+    slices: 6,
+    shadow: true,
+    perspective: 500
+  });
 }
