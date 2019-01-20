@@ -46,7 +46,7 @@ Replace every `YOUR_API_KEY` with your own API keys. Then, just paste this line 
 
 ```<script src="api/api.sample.js"></script>```
 
-at the end of the html file, juste before the `</body>` declaration.
+at the end of the HTML file, juste before the `</body>` tag.
 
 ## Maps presentation
 
