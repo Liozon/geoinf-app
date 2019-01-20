@@ -1,7 +1,7 @@
 # Geography information application (also known as GeoInf)
 
 - [Geography information application (also known as GeoInf)](#geography-information-application-also-known-as-geoinf)
-  - [Intro](#intro)
+  - [Introduction](#introduction)
   - [Preview](#preview)
   - [Installation](#installation)
   - [API keys](#api-keys)
@@ -16,7 +16,7 @@
 
 ![Map view](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/map.png "Map view")
 
-## Intro
+## Introduction
 
 This app was developped during the GeoInf course at the HEIG-VD school of Yverdon-les-Bains. While all comments in this code and ReadMe are in english, the content is displayed in french exclusively.
 
@@ -48,7 +48,9 @@ In order to use this app and all resources, you'll need to provide your own API 
 
 Replace every `YOUR_API_KEY` with your own API keys. Then, just paste this line in the `index.html` file:
 
-```<script src="api/api.sample.js"></script>```
+```html
+<script src="api/api.sample.js"></script>
+```
 
 at the end of the HTML file, juste before the `</body>` tag.
 
