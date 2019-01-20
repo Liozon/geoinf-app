@@ -9,6 +9,9 @@
     - [Here Maps](#here-maps)
     - [Outdoor activities](#outdoor-activities)
     - [Bing Maps](#bing-maps)
+    - [High contrast](#high-contrast)
+    - [Slope map](#slope-map)
+    - [OpenStreetMap](#openstreetmap)
 
 ![Map view](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/map.png "Map view")
 
@@ -61,3 +64,15 @@ at the end of the HTML file, juste before the `</body>` tag.
 ### Bing Maps
 
 ![Bing Maps](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/bing%20map.png "Bing Maps")
+
+### High contrast
+
+![High contrast](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/high%20contrast.png "High contrast")
+
+### Slope map
+
+![Slope map](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/slope%20map.png "Slope map")
+
+### OpenStreetMap
+
+![OpenStreetMap](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/openstreetmap.png "OpenStreetMap")
