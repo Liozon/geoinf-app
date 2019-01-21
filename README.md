@@ -60,25 +60,37 @@ at the end of the HTML file, juste before the `</body>` tag.
 
 ![Here Maps](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/here%20maps%20map.png "Here Maps")
 
+Here Maps is the default map for this app.
+
 ### Outdoor activities
 
 ![Outdoor activities](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/outdoor%20activities%20map.png "Outdoor activities")
+
+Outdoor activities is a map that contains all outdoors activities, perfect if you plan to go hiking.
 
 ### Bing Maps
 
 ![Bing Maps](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/bing%20map.png "Bing Maps")
 
+Bing Maps is used to display a satellite view of Switzerland.
+
 ### High contrast
 
 ![High contrast](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/high%20contrast.png "High contrast")
+
+High contrast is a map that is highly readable outside in a sunny place.
 
 ### Slope map
 
 ![Slope map](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/slope%20map.png "Slope map")
 
+Slope map is useful if you plan to go in the mountains. This map contains the elevation marking.
+
 ### OpenStreetMap
 
 ![OpenStreetMap](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/openstreetmap.png "OpenStreetMap")
+
+OpenStreetMap is an alternative to the other maps.
 
 ## Layers presentation
 
