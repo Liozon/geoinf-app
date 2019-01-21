@@ -3,8 +3,8 @@
 // CartoDB data format
 var format = "GeoJSON";
 
+// Main function
 (function () {
-  //on();
   $("input[type=checkbox]").removeAttr("checked");
   var inputButton = document.getElementById("searchbox");
   inputButton.addEventListener("click", geocodage);
@@ -17,7 +17,6 @@ var format = "GeoJSON";
   var view = new ol.View({
     center: ol.proj.transform([8.2, 46.7], "EPSG:4326", "EPSG:3857"),
     zoom: 8.5
-    //minZoom: 8.5
   });
   var map = new ol.Map({
     target: "map",
@@ -191,7 +190,6 @@ var format = "GeoJSON";
               format: new ol.format.GeoJSON()
             })
           })
-          // CartoDB API documentation: https://carto.com/developers/data-services-api/reference/
         ]
       })
     ]
@@ -200,12 +198,10 @@ var format = "GeoJSON";
   // Searchbox
   function geocodage() {
     var adresse = $("#adress").val();
-
     var urlAdresse =
       "https://nominatim.openstreetmap.org/search?q=" +
       adresse +
       "&format=jsonv2&bounded=1";
-
     $.getJSON(urlAdresse, function (json) {
       var styleVecteur = new ol.style.Style({
         image: new ol.style.Circle({
@@ -220,18 +216,14 @@ var format = "GeoJSON";
         })
       });
       var sourceVecteur = new ol.source.Vector({});
-
       var vecteur = new ol.layer.Vector({
         source: sourceVecteur,
         style: styleVecteur
       });
-
       map.addLayer(vecteur);
-
       if (json != "") {
         var latAdresse = json[0].lat;
         var lngAdresse = json[0].lon;
-
         var coord = [parseFloat(lngAdresse), parseFloat(latAdresse)];
         var newcoord = ol.proj.transform(coord, "EPSG:4326", "EPSG:3857");
         var locFeature = new ol.Feature({
@@ -250,7 +242,6 @@ var format = "GeoJSON";
 
   // Geolocation
   var geolocation = new ol.Geolocation({
-    // enableHighAccuracy must be set to true to have the heading value.
     trackingOptions: {
       enableHighAccuracy: true
     },
@@ -260,23 +251,19 @@ var format = "GeoJSON";
   function el(id) {
     return document.getElementById(id);
   }
-
   el("track").addEventListener("change", function () {
     geolocation.setTracking(this.checked);
   });
-
   // Handling geolocation error.
   geolocation.on("error", function (error) {
     var info = document.getElementById("info");
     info.innerHTML = error.message;
     info.style.display = "";
   });
-
   var accuracyFeature = new ol.Feature();
   geolocation.on("change:accuracyGeometry", function () {
     accuracyFeature.setGeometry(geolocation.getAccuracyGeometry());
   });
-
   var positionFeature = new ol.Feature();
   positionFeature.setStyle(
     new ol.style.Style({
@@ -304,7 +291,6 @@ var format = "GeoJSON";
       zoom: 13
     });
   });
-
   new ol.layer.Vector({
     map: map,
     source: new ol.source.Vector({
@@ -314,12 +300,12 @@ var format = "GeoJSON";
 
   // Adding the Layer switcher
   var layerSwitcher = new ol.control.LayerSwitcher({
-    tipLabel: "Légende" // Label for button
+    tipLabel: "Légende"
   });
   map.addControl(layerSwitcher);
 
   // Click anywhere on the map
-  // Data on click on the map pixel
+  // Data obtained from the pixel of the map
   map.on("click", function (evt) {
     var styleVecteur = new ol.style.Style({
       image: new ol.style.Circle({
@@ -334,19 +320,15 @@ var format = "GeoJSON";
       })
     });
     var sourceVecteur = new ol.source.Vector({});
-
     var vecteur = new ol.layer.Vector({
       source: sourceVecteur,
       style: styleVecteur
     });
-
     map.addLayer(vecteur);
-
     var position = evt.coordinate;
     var newposition = ol.proj.transform(position, "EPSG:3857", "EPSG:4326");
     var latitude = newposition[1];
     var longitude = newposition[0];
-
     var urlPosition =
       "https://nominatim.openstreetmap.org/reverse?lat=" +
       latitude +
@@ -372,12 +354,11 @@ var format = "GeoJSON";
     });
   });
 
-  // Interaction controls
+  // Infocard controls
   var selectInteraction = new ol.interaction.Select({
     condition: ol.events.condition.singleClick
   });
   map.addInteraction(selectInteraction);
-
   selectInteraction.on("select", function (e) {
     if (e.selected.length > 0) {
       var restrictionName = e.selected[0].get("name_f");
@@ -387,7 +368,6 @@ var format = "GeoJSON";
       var cantonName = e.selected[0].get("name");
       var airportName = e.selected[0].get("airport_name");
       var airportType = e.selected[0].get("type");
-
       if (restrictionName) {
         $("#info").empty();
         $("#info").html("<table id='table'></table>");
@@ -420,10 +400,7 @@ var format = "GeoJSON";
   });
 })();
 
-function on() {
-  document.getElementById("overlay").style.display = "block";
-}
-
+// Overlay
 function off() {
   document.getElementById("overlay").style.zIndex = "-1";
   document.getElementById("content").style.backgroundColor = "white";
@@ -432,6 +409,7 @@ function off() {
   document.getElementById("bloc-input").style.display = "block";
   window.setTimeout(() => {
     document.getElementById("overlay").remove();
+    document.getElementById("content").style.backgroundImage = "none";
   }, 5000);
   $('#content').unfold({
     duration: 1500,

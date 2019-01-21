@@ -16,5 +16,6 @@ var app_code = "YOUR_API_KEY";
 
 // CartoDB/Carto.com API key and format definition
 // Get your key here: https://carto.com/login
+// CartoDB API documentation: https://carto.com/developers/data-services-api/reference/
 var format = "GeoJSON";
 var key = "YOUR_API_KEY";
