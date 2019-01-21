@@ -16,6 +16,7 @@
     - [OpenStreetMap](#openstreetmap)
   - [Layers presentation](#layers-presentation)
     - [List of all layers](#list-of-all-layers)
+  - [Other](#other)
 
 ## Introduction
 
@@ -117,3 +118,11 @@ OpenStreetMap is an alternative to the other maps.
 Here is a view with all the possible layers activated:
 
 ![All layers activated](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/all%20layers.png "All layers activated")
+
+## Other
+
+If you find a bug, or have a suggestion on how to improve this code, do not hesitate to open an issue on GitHub, you can find a template for:
+
+- [Bug report](https://github.com/Liozon/geoinf-app/blob/perfectioning/.github/ISSUE_TEMPLATE/bug_report.md)
+- [Feature request](https://github.com/Liozon/geoinf-app/blob/perfectioning/.github/ISSUE_TEMPLATE/feature_request.md)
+- [Other](https://github.com/Liozon/geoinf-app/blob/perfectioning/.github/ISSUE_TEMPLATE/custom.md)
