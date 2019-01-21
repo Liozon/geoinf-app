@@ -1,5 +1,7 @@
 # Geography information application (also known as GeoInf)
 
+![Map view](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/map.png "Map view")
+
 - [Geography information application (also known as GeoInf)](#geography-information-application-also-known-as-geoinf)
   - [Introduction](#introduction)
   - [Preview](#preview)
@@ -15,9 +17,11 @@
   - [Layers presentation](#layers-presentation)
     - [List of all layers](#list-of-all-layers)
 
-![Map view](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/map.png "Map view")
-
 ## Introduction
+
+The idea behind this application is to differentiate the different areas where it is allowed to fly his drone areas where it is prohibited.
+
+Reliable data from the Swiss Confederation are used, as well as live weather data, to enhance and better organize your next flights.
 
 This app was developped during the GeoInf course at the HEIG-VD school of Yverdon-les-Bains. While all comments in this code and ReadMe are in english, the content is displayed in french exclusively.
 
