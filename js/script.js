@@ -432,6 +432,7 @@ function off() {
   document.getElementById("bloc-input").style.display = "block";
   window.setTimeout(() => {
     document.getElementById("overlay").remove();
+    document.getElementById("content").style.backgroundImage = "none";
   }, 5000);
   $('#content').unfold({
     duration: 1500,
