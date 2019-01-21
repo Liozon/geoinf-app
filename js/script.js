@@ -3,6 +3,7 @@
 // CartoDB data format
 var format = "GeoJSON";
 
+// Main function
 (function () {
   $("input[type=checkbox]").removeAttr("checked");
   var inputButton = document.getElementById("searchbox");
@@ -299,12 +300,12 @@ var format = "GeoJSON";
 
   // Adding the Layer switcher
   var layerSwitcher = new ol.control.LayerSwitcher({
-    tipLabel: "Légende" // Label for button
+    tipLabel: "Légende"
   });
   map.addControl(layerSwitcher);
 
   // Click anywhere on the map
-  // Data on click on the map pixel
+  // Data obtained from the pixel of the map
   map.on("click", function (evt) {
     var styleVecteur = new ol.style.Style({
       image: new ol.style.Circle({
@@ -353,7 +354,7 @@ var format = "GeoJSON";
     });
   });
 
-  // Interaction controls
+  // Infocard controls
   var selectInteraction = new ol.interaction.Select({
     condition: ol.events.condition.singleClick
   });
@@ -399,6 +400,7 @@ var format = "GeoJSON";
   });
 })();
 
+// Overlay
 function off() {
   document.getElementById("overlay").style.zIndex = "-1";
   document.getElementById("content").style.backgroundColor = "white";
