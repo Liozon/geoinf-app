@@ -5,6 +5,7 @@
 - [Geography information application (also known as GeoInf)](#geography-information-application-also-known-as-geoinf)
   - [Introduction](#introduction)
   - [Preview](#preview)
+  - [Client-server architecture](#client-server-architecture)
   - [Installation](#installation)
   - [API keys](#api-keys)
   - [Maps presentation](#maps-presentation)
@@ -31,6 +32,18 @@ This app was developped during the GeoInf course at the HEIG-VD school of Yverdo
 ## Preview
 
 You can [click here](http://tiny.cc/geoinf-readme-git) to preview the app directly in your browser with GitHub Pages or [here on my mirror/backup website](http://tiny.cc/geoinf-readme-own).
+
+## Client-server architecture
+
+In order to offer the best user experience possible, some data are stored on external services.
+Thoses services, such as Swiss Confederation's Web Map Service (or WMS) and CartoDB Services.
+
+Here is a list of all the data, their source and file format:
+
+| Layer name | Source | File format |
+| ---------- | ------ | ----------- |
+
+
 
 ## Installation
 
