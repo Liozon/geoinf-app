@@ -1,6 +1,6 @@
 # Geography information application (also known as GeoInf)
 
-![Map view](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/map.png "Map view")
+![Map view](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots//View%20on%20Surface%20Studio.png "Map view")
 
 - [Geography information application (also known as GeoInf)](#geography-information-application-also-known-as-geoinf)
   - [Introduction](#introduction)
