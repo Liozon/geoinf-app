@@ -10,6 +10,33 @@ body {
     overflow: hidden;
 }
 
+#legend1 {
+    display: none;
+    background-color: white;
+    position: absolute;
+    bottom: 20px;
+    right: 60px;
+    padding: 10px;
+    list-style: none;
+}
+
+#legend1 .legend-scale ul li {
+    display: block;
+    float: left;
+    width: 50px;
+    margin-bottom: 6px;
+    text-align: center;
+    font-size: 80%;
+    list-style: none;
+}
+
+#legend1 ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 15px;
+    width: 50px;
+}
+
 textarea,
 select,
 input,
@@ -89,6 +116,19 @@ input[type=text] {
 .btn-success:hover {
     background-color: #4CAF50;
     color: white;
+}
+
+#displayLegends {
+    display: none;
+    position: absolute;
+    bottom: 80px;
+    left: 60px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: solid gray 1px;
+    padding: 5px;
+    font-size: 15px;
+    font-family: Roboto;
+    z-index: 1000000000;
 }
 
 #tracking {
