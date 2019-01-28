@@ -36,14 +36,18 @@ You can [click here](http://tiny.cc/geoinf-readme-git) to preview the app direct
 ## Client-server architecture
 
 In order to offer the best user experience possible, some data are stored on external services.
-Thoses services, such as Swiss Confederation's Web Map Service (or WMS) and CartoDB Services.
+Thoses services, such as Swiss Confederation's Web Map Tiling Services (or WMTS) and CartoDB Services.
 
-Here is a list of all the data, their source and file format:
+Here is a list of all the tiles, their source and file format:
 
-| Layer name | Source | File format |
-| ---------- | ------ | ----------- |
-
-
+| Layer name            | Source                     | File format | URL                                               |
+| --------------------- | -------------------------- | ----------- | ------------------------------------------------- |
+| Here Maps             | Here Maps API              | png         | https://developer.here.com/documentation          |
+| Activités extérieures | Swiss Confederation's WMTS | png         | https://api3.geo.admin.ch/api/doc.html            |
+| Bing Maps             | Bing Maps API              | jpeg        | https://docs.microsoft.com/en-us/bingmaps/        |
+| Contraste élevé       | Thunderforest API          | png         | https://www.thunderforest.com/docs/map-tiles-api/ |
+| Dénivelation          | Thunderforest API          | png         | https://www.thunderforest.com/docs/map-tiles-api/ |
+| OpenStreetMap         | OpenStreetMap API          | png         | https://wiki.openstreetmap.org/wiki/OpenLayers    |
 
 ## Installation
 
