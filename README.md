@@ -45,34 +45,34 @@ Thoses services, such as Swiss Confederation's Web Map Tiling Services (or WMTS)
 
 Here is a list of all the tiles, their source and file format:
 
-| Tile name             | Source                     | File format | API URL                                           |
-| --------------------- | -------------------------- | ----------- | ------------------------------------------------- |
-| Here Maps             | Here Maps API              | png         | https://developer.here.com/documentation          |
-| Activités extérieures | Swiss Confederation's WMTS | png         | https://api3.geo.admin.ch/api/doc.html            |
-| Bing Maps             | Bing Maps API              | jpeg        | https://docs.microsoft.com/en-us/bingmaps/        |
-| Contraste élevé       | Thunderforest API          | png         | https://www.thunderforest.com/docs/map-tiles-api/ |
-| Dénivelation          | Thunderforest API          | png         | https://www.thunderforest.com/docs/map-tiles-api/ |
-| OpenStreetMap         | OpenStreetMap API          | png         | https://wiki.openstreetmap.org/wiki/OpenLayers    |
+| Tile name             | Source                     | File format | API URL                                             |
+| --------------------- | -------------------------- | ----------- | --------------------------------------------------- |
+| Here Maps             | Here Maps API              | png         | <https://developer.here.com/documentation>          |
+| Activités extérieures | Swiss Confederation's WMTS | png         | <https://api3.geo.admin.ch/api/doc.html>            |
+| Bing Maps             | Bing Maps API              | jpeg        | <https://docs.microsoft.com/en-us/bingmaps/>        |
+| Contraste élevé       | Thunderforest API          | png         | <https://www.thunderforest.com/docs/map-tiles-api/> |
+| Dénivelation          | Thunderforest API          | png         | <https://www.thunderforest.com/docs/map-tiles-api/> |
+| OpenStreetMap         | OpenStreetMap API          | png         | <https://wiki.openstreetmap.org/wiki/OpenLayers>    |
 
 ### Layers
 
 Here is a list of all the layers, their source and file format:
 
-| Layer name                   | Source                    | File format | URL                                                       |
-| ---------------------------- | ------------------------- | ----------- | --------------------------------------------------------- |
-| Aéroports                    | CartoDB                   | GeoJSON     | https://carto.com/developers/data-services-api/reference/ |
-| Zones interdites de vol      | CartoDB                   | GeoJSON     | https://carto.com/developers/data-services-api/reference/ |
-| Cantons                      | CartoDB                   | GeoJSON     | https://carto.com/developers/data-services-api/reference/ |
-| Carte des vents              | Swiss Confederation's WMS | png         | https://api3.geo.admin.ch/api/faq/index.html              |
-| Intensité des précipitations | OpenWeatherMap            | png         | https://openweathermap.org/api                            |
-| Humidité relative            | OpenWeatherMap            | png         | https://openweathermap.org/api                            |
+| Layer name                   | Source                    | File format | URL                                                         |
+| ---------------------------- | ------------------------- | ----------- | ----------------------------------------------------------- |
+| Aéroports                    | CartoDB                   | GeoJSON     | <https://carto.com/developers/data-services-api/reference/> |
+| Zones interdites de vol      | CartoDB                   | GeoJSON     | <https://carto.com/developers/data-services-api/reference/> |
+| Cantons                      | CartoDB                   | GeoJSON     | <https://carto.com/developers/data-services-api/reference/> |
+| Carte des vents              | Swiss Confederation's WMS | png         | <https://api3.geo.admin.ch/api/faq/index.html>              |
+| Intensité des précipitations | OpenWeatherMap            | png         | <https://openweathermap.org/api>                            |
+| Humidité relative            | OpenWeatherMap            | png         | <https://openweathermap.org/api>                            |
 
 ### Additional services
 
-| Service name     | Use                                                   | Source    | URL                                           |
-| ---------------- | ----------------------------------------------------- | --------- | --------------------------------------------- |
-| Geocoder         | Service used for the searchbox                        | Nominatim | https://wiki.openstreetmap.org/wiki/Nominatim |
-| Reverse Geocoder | Used to get the adress when the user click on the map | Nominatim | https://wiki.openstreetmap.org/wiki/Nominatim |
+| Service name     | Use                                                   | Source    | URL                                             |
+| ---------------- | ----------------------------------------------------- | --------- | ----------------------------------------------- |
+| Geocoder         | Service used for the searchbox                        | Nominatim | <https://wiki.openstreetmap.org/wiki/Nominatim> |
+| Reverse Geocoder | Used to get the adress when the user click on the map | Nominatim | <https://wiki.openstreetmap.org/wiki/Nominatim> |
 
 ## Installation
 
