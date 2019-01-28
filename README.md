@@ -1,10 +1,14 @@
 # Geography information application (also known as GeoInf)
 
-![Map view](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/map.png "Map view")
+![Application view](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots//View%20on%20Surface%20Studio.png "Application view")
 
 - [Geography information application (also known as GeoInf)](#geography-information-application-also-known-as-geoinf)
   - [Introduction](#introduction)
   - [Preview](#preview)
+  - [Client-server architecture](#client-server-architecture)
+    - [Tiles](#tiles)
+    - [Layers](#layers)
+    - [Additional services](#additional-services)
   - [Installation](#installation)
   - [API keys](#api-keys)
   - [Maps presentation](#maps-presentation)
@@ -26,11 +30,49 @@ Reliable data from the Swiss Confederation are used, as well as live weather dat
 
 This app was developped during the GeoInf course at the HEIG-VD school of Yverdon-les-Bains. While all comments in this code and ReadMe are in english, the content is displayed in french exclusively.
 
-![Home screen](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/home%20screen.png "Home screen")
+![Home screen](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/View%20on%20Surface%20Studio%202.png "Home screen")
 
 ## Preview
 
 You can [click here](http://tiny.cc/geoinf-readme-git) to preview the app directly in your browser with GitHub Pages or [here on my mirror/backup website](http://tiny.cc/geoinf-readme-own).
+
+## Client-server architecture
+
+In order to offer the best user experience possible, some data are stored on external services.
+Thoses services, such as Swiss Confederation's Web Map Tiling Services (or WMTS) and CartoDB Services.
+
+### Tiles
+
+Here is a list of all the tiles, their source and file format:
+
+| Tile name             | Source                     | File format | API URL                                             |
+| --------------------- | -------------------------- | ----------- | --------------------------------------------------- |
+| Here Maps             | Here Maps API              | png         | <https://developer.here.com/documentation>          |
+| Activités extérieures | Swiss Confederation's WMTS | png         | <https://api3.geo.admin.ch/api/doc.html>            |
+| Bing Maps             | Bing Maps API              | jpeg        | <https://docs.microsoft.com/en-us/bingmaps/>        |
+| Contraste élevé       | Thunderforest API          | png         | <https://www.thunderforest.com/docs/map-tiles-api/> |
+| Dénivelation          | Thunderforest API          | png         | <https://www.thunderforest.com/docs/map-tiles-api/> |
+| OpenStreetMap         | OpenStreetMap API          | png         | <https://wiki.openstreetmap.org/wiki/OpenLayers>    |
+
+### Layers
+
+Here is a list of all the layers, their source and file format:
+
+| Layer name                   | Source                    | File format | URL                                                         |
+| ---------------------------- | ------------------------- | ----------- | ----------------------------------------------------------- |
+| Aéroports                    | CartoDB                   | GeoJSON     | <https://carto.com/developers/data-services-api/reference/> |
+| Zones interdites de vol      | CartoDB                   | GeoJSON     | <https://carto.com/developers/data-services-api/reference/> |
+| Cantons                      | CartoDB                   | GeoJSON     | <https://carto.com/developers/data-services-api/reference/> |
+| Carte des vents              | Swiss Confederation's WMS | png         | <https://api3.geo.admin.ch/api/faq/index.html>              |
+| Intensité des précipitations | OpenWeatherMap            | png         | <https://openweathermap.org/api>                            |
+| Humidité relative            | OpenWeatherMap            | png         | <https://openweathermap.org/api>                            |
+
+### Additional services
+
+| Service name     | Use                                                   | Source    | URL                                             |
+| ---------------- | ----------------------------------------------------- | --------- | ----------------------------------------------- |
+| Geocoder         | Service used for the searchbox                        | Nominatim | <https://wiki.openstreetmap.org/wiki/Nominatim> |
+| Reverse Geocoder | Used to get the adress when the user click on the map | Nominatim | <https://wiki.openstreetmap.org/wiki/Nominatim> |
 
 ## Installation
 
@@ -70,13 +112,13 @@ Here Maps is the default map for this app.
 
 ### Outdoor activities
 
-Outdoor activities is a map that contains all outdoors activities, perfect if you plan to go hiking.
+Outdoor activities is a map that contains all outdoors activities, perfect if you plan to go hiking for example, and you want to explore the best hiking trails and film them with your drone.
 
 ![Outdoor activities](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/outdoor%20activities%20map.png "Outdoor activities")
 
 ### Bing Maps
 
-Bing Maps is used to display a satellite view of Switzerland.
+Bing Maps is used to display a satellite view of Switzerland. This map is very useful to help you find your way around with the various visual elements surrounding you.
 
 ![Bing Maps](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/bing%20map.png "Bing Maps")
 
@@ -94,7 +136,7 @@ Slope map is useful if you plan to go in the mountains. This map contains the el
 
 ### OpenStreetMap
 
-OpenStreetMap is an alternative to the other maps.
+OpenStreetMap is an alternative to the other maps and has a more flat appearance.
 
 ![OpenStreetMap](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/openstreetmap.png "OpenStreetMap")
 
