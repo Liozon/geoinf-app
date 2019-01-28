@@ -6,6 +6,8 @@ var format = "GeoJSON";
 // Main function
 (function () {
   $("input[type=checkbox]").removeAttr("checked");
+  var legendsButton = document.getElementById("displayLegends");
+  legendsButton.addEventListener("change", displayLegends);
   var inputButton = document.getElementById("searchbox");
   inputButton.addEventListener("click", geocodage);
   var inputText = document.getElementById("adress");
@@ -406,6 +408,7 @@ function off() {
   document.getElementById("content").style.backgroundColor = "white";
   document.getElementById("info").style.display = "block";
   document.getElementById("tracking").style.display = "block";
+  document.getElementById("displayLegends").style.display = "block";
   document.getElementById("bloc-input").style.display = "block";
   window.setTimeout(() => {
     document.getElementById("overlay").remove();
@@ -417,4 +420,13 @@ function off() {
     shadow: true,
     perspective: 500
   });
+}
+
+// Display legends
+function displayLegends() {
+  if ($('#legends').prop("checked")) {
+    document.getElementById("legend1").style.display = "block";
+  } else {
+    document.getElementById("legend1").style.display = "none";
+  }
 }
