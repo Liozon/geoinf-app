@@ -69,10 +69,11 @@ Here is a list of all the layers, their source and file format:
 
 ### Additional services
 
-| Service name     | Use                                                   | Source    | URL                                             |
-| ---------------- | ----------------------------------------------------- | --------- | ----------------------------------------------- |
-| Geocoder         | Service used for the searchbox                        | Nominatim | <https://wiki.openstreetmap.org/wiki/Nominatim> |
-| Reverse Geocoder | Used to get the adress when the user click on the map | Nominatim | <https://wiki.openstreetmap.org/wiki/Nominatim> |
+| Service name     | Use                                                   | Source                     | URL                                                                            |
+| ---------------- | ----------------------------------------------------- | -------------------------- | ------------------------------------------------------------------------------ |
+| Geocoder         | Service used for the searchbox                        | Nominatim                  | <https://wiki.openstreetmap.org/wiki/Nominatim>                                |
+| Reverse Geocoder | Used to get the adress when the user click on the map | Nominatim                  | <https://wiki.openstreetmap.org/wiki/Nominatim>                                |
+| Geolocation      | Location of the user's current position               | OpenLayers Geolocation API | https://openlayers.org/en/latest/apidoc/module-ol_Geolocation-Geolocation.html |
 
 ## Installation
 
