@@ -1,6 +1,6 @@
 # Geography information application (also known as GeoInf)
 
-![Map view](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots//View%20on%20Surface%20Studio.png "Map view")
+![Application view](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots//View%20on%20Surface%20Studio.png "Application view")
 
 - [Geography information application (also known as GeoInf)](#geography-information-application-also-known-as-geoinf)
   - [Introduction](#introduction)
@@ -30,7 +30,7 @@ Reliable data from the Swiss Confederation are used, as well as live weather dat
 
 This app was developped during the GeoInf course at the HEIG-VD school of Yverdon-les-Bains. While all comments in this code and ReadMe are in english, the content is displayed in french exclusively.
 
-![Home screen](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/home%20screen.png "Home screen")
+![Home screen](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/View%20on%20Surface%20Studio%202.png "Home screen")
 
 ## Preview
 
