@@ -112,13 +112,13 @@ Here Maps is the default map for this app.
 
 ### Outdoor activities
 
-Outdoor activities is a map that contains all outdoors activities, perfect if you plan to go hiking.
+Outdoor activities is a map that contains all outdoors activities, perfect if you plan to go hiking for example, and you want to explore the best hiking trails and film them with your drone.
 
 ![Outdoor activities](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/outdoor%20activities%20map.png "Outdoor activities")
 
 ### Bing Maps
 
-Bing Maps is used to display a satellite view of Switzerland.
+Bing Maps is used to display a satellite view of Switzerland. This map is very useful to help you find your way around with the various visual elements surrounding you.
 
 ![Bing Maps](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/bing%20map.png "Bing Maps")
 
@@ -136,7 +136,7 @@ Slope map is useful if you plan to go in the mountains. This map contains the el
 
 ### OpenStreetMap
 
-OpenStreetMap is an alternative to the other maps.
+OpenStreetMap is an alternative to the other maps and has a more flat appearance.
 
 ![OpenStreetMap](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/openstreetmap.png "OpenStreetMap")
 
