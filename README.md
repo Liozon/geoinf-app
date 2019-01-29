@@ -5,24 +5,24 @@
 - [Geography information application (also known as GeoInf)](#geography-information-application-also-known-as-geoinf)
   - [Introduction](#introduction)
   - [Preview](#preview)
+  - [Application presentation](#application-presentation)
+    - [Maps](#maps)
+      - [Here Maps](#here-maps)
+      - [Outdoor activities](#outdoor-activities)
+      - [Bing Maps](#bing-maps)
+      - [High contrast](#high-contrast)
+      - [Slope map](#slope-map)
+      - [OpenStreetMap](#openstreetmap)
+    - [Layers](#layers)
+      - [List of all layers](#list-of-all-layers)
+    - [Legends](#legends)
   - [Client-server architecture](#client-server-architecture)
     - [Tiles](#tiles)
-    - [Layers](#layers)
+    - [Layers](#layers-1)
     - [Additional services](#additional-services)
   - [Installation](#installation)
   - [API keys](#api-keys)
-  - [Maps presentation](#maps-presentation)
-    - [Here Maps](#here-maps)
-    - [Outdoor activities](#outdoor-activities)
-    - [Bing Maps](#bing-maps)
-    - [High contrast](#high-contrast)
-    - [Slope map](#slope-map)
-    - [OpenStreetMap](#openstreetmap)
-  - [Layers presentation](#layers-presentation)
-    - [List of all layers](#list-of-all-layers)
-  - [Other](#other)
-    - [Legends](#legends)
-    - [Suggestion](#suggestion)
+  - [Suggestions](#suggestions)
 
 ## Introduction
 
@@ -37,6 +37,75 @@ This app was developped during the GeoInf course at the HEIG-VD school of Yverdo
 ## Preview
 
 You can [click here](http://tiny.cc/geoinf-readme-git) to preview the app directly in your browser with GitHub Pages or [here on my mirror/backup website](http://tiny.cc/geoinf-readme-own).
+
+## Application presentation
+
+### Maps
+
+#### Here Maps
+
+Here Maps is the default map for this app.
+
+![Here Maps](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/here%20maps%20map.png "Here Maps")
+
+#### Outdoor activities
+
+Outdoor activities is a map that contains all outdoors activities, perfect if you plan to go hiking for example, and you want to explore the best hiking trails and film them with your drone.
+
+![Outdoor activities](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/outdoor%20activities%20map.png "Outdoor activities")
+
+#### Bing Maps
+
+Bing Maps is used to display a satellite view of Switzerland. This map is very useful to help you find your way around with the various visual elements surrounding you.
+
+![Bing Maps](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/bing%20map.png "Bing Maps")
+
+#### High contrast
+
+High contrast is a map that is highly readable outside in a sunny place.
+
+![High contrast](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/high%20contrast.png "High contrast")
+
+#### Slope map
+
+Slope map is useful if you plan to go in the mountains. This map contains the elevation marking.
+
+![Slope map](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/slope%20map.png "Slope map")
+
+#### OpenStreetMap
+
+OpenStreetMap is an alternative to the other maps and has a more flat appearance.
+
+![OpenStreetMap](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/openstreetmap.png "OpenStreetMap")
+
+### Layers
+
+#### List of all layers
+
+![Available layers](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/selection%20of%20layers.jpg "Available layers")
+
+- Prohibited areas
+  - Airports
+  - Prohibited areas
+  - Townships
+  
+- Meteorological
+  - Wind direction (Live data)
+  - Winds map (Statistics from the Swiss Confederation)
+  - Intensity of rainfall (Live data)
+  - Relative humidity (Live data)
+
+Here is a view with all the possible layers activated:
+
+![All layers activated](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/all%20layers.png "All layers activated")
+
+### Legends
+
+In addition to the layers, you can display two legends. These legends make it possible to better interpret the "Relative humidity" and "Precipitation intensity" layers.
+
+![Legends button](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/options.jpg "Legends button")
+
+![Legends](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/legends.jpg "Legends")
 
 ## Client-server architecture
 
@@ -105,76 +174,7 @@ Replace every `YOUR_API_KEY` with your own API keys. Then, just paste this line 
 
 at the end of the HTML file, juste before the `</body>` tag.
 
-## Maps presentation
-
-### Here Maps
-
-Here Maps is the default map for this app.
-
-![Here Maps](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/here%20maps%20map.png "Here Maps")
-
-### Outdoor activities
-
-Outdoor activities is a map that contains all outdoors activities, perfect if you plan to go hiking for example, and you want to explore the best hiking trails and film them with your drone.
-
-![Outdoor activities](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/outdoor%20activities%20map.png "Outdoor activities")
-
-### Bing Maps
-
-Bing Maps is used to display a satellite view of Switzerland. This map is very useful to help you find your way around with the various visual elements surrounding you.
-
-![Bing Maps](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/bing%20map.png "Bing Maps")
-
-### High contrast
-
-High contrast is a map that is highly readable outside in a sunny place.
-
-![High contrast](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/high%20contrast.png "High contrast")
-
-### Slope map
-
-Slope map is useful if you plan to go in the mountains. This map contains the elevation marking.
-
-![Slope map](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/slope%20map.png "Slope map")
-
-### OpenStreetMap
-
-OpenStreetMap is an alternative to the other maps and has a more flat appearance.
-
-![OpenStreetMap](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/openstreetmap.png "OpenStreetMap")
-
-## Layers presentation
-
-### List of all layers
-
-![Available layers](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/selection%20of%20layers.jpg "Available layers")
-
-- Prohibited areas
-  - Airports
-  - Prohibited areas
-  - Townships
-  
-- Meteorological
-  - Wind direction (Live data)
-  - Winds map (Statistics from the Swiss Confederation)
-  - Intensity of rainfall (Live data)
-  - Relative humidity (Live data)
-
-Here is a view with all the possible layers activated:
-
-![All layers activated](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/all%20layers.png "All layers activated")
-
-## Other
-
-### Legends
-
-![Legends button](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/options.jpg "Legends button")
-
-In addition to the layers, you can display two legends. These legends make it possible to better interpret the "Relative humidity" and "Precipitation intensity" layers.
-
-![Legends](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/legends.jpg "Legends")
-
-### Suggestion
+## Suggestions
 
 If you find a bug, or have a suggestion on how to improve this code, do not hesitate to open an issue on GitHub, you can find a template for:
 
