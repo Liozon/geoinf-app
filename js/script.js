@@ -14,6 +14,8 @@ var format = "GeoJSON";
       geocodage();
     }
   });
+  var legendsButton = document.getElementById("displayLegends");
+  legendsButton.addEventListener("change", displayLegends);
   var view = new ol.View({
     center: ol.proj.transform([8.2, 46.7], "EPSG:4326", "EPSG:3857"),
     zoom: 8.5
@@ -406,6 +408,7 @@ function off() {
   document.getElementById("content").style.backgroundColor = "white";
   document.getElementById("info").style.display = "block";
   document.getElementById("tracking").style.display = "block";
+  document.getElementById("displayLegends").style.display = "block";
   document.getElementById("bloc-input").style.display = "block";
   window.setTimeout(() => {
     document.getElementById("overlay").remove();
@@ -417,4 +420,15 @@ function off() {
     shadow: true,
     perspective: 500
   });
+}
+
+// Display legends
+function displayLegends() {
+  if ($('#legends').prop("checked")) {
+    document.getElementById("legend1").style.display = "block";
+    document.getElementById("legend2").style.display = "block";
+  } else {
+    document.getElementById("legend1").style.display = "none";
+    document.getElementById("legend2").style.display = "none";
+  }
 }

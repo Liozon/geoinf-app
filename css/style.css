@@ -91,6 +91,19 @@ input[type=text] {
     color: white;
 }
 
+#displayLegends {
+    display: none;
+    position: absolute;
+    bottom: 80px;
+    left: 60px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: solid gray 1px;
+    padding: 5px;
+    font-size: 15px;
+    font-family: Roboto;
+    z-index: 1000000000;
+}
+
 #tracking {
     display: none;
     position: absolute;
@@ -116,7 +129,7 @@ input[type=text] {
     /* background-color: rgb(60, 60, 60); */
     background-image: url("../img/tile.png");
     background-repeat: repeat;
-    z-index: 10;
+    z-index: 2000000000;
     cursor: pointer;
 }
 
@@ -285,4 +298,66 @@ a:active {
 .layer-switcher .group.layer-switcher-fold.layer-switcher-close>ul {
     overflow: hidden;
     height: 0;
+}
+
+/* Légendes */
+
+#legend1 {
+    display: none;
+    background-color: white;
+    position: absolute;
+    bottom: 20px;
+    right: 60px;
+    padding: 10px;
+    list-style: none;
+    z-index: 1
+}
+
+#legend1 .legend-scale ul li {
+    display: block;
+    float: left;
+    width: 50px;
+    margin-bottom: 6px;
+    text-align: center;
+    font-size: 80%;
+    list-style: none;
+    z-index: 1
+}
+
+#legend1 ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 15px;
+    width: 50px;
+    z-index: 1
+}
+
+#legend2 {
+    display: none;
+    background-color: white;
+    position: absolute;
+    bottom: 100px;
+    right: 60px;
+    padding: 10px;
+    list-style: none;
+    z-index: 1
+}
+
+#legend2 .legend-scale ul li {
+    display: block;
+    float: left;
+    width: 50px;
+    margin-bottom: 6px;
+    text-align: center;
+    font-size: 80%;
+    list-style: none;
+    z-index: 1
+}
+
+#legend2 ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 15px;
+    width: 50px;
+    z-index: 1
 }

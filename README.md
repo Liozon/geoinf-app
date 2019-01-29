@@ -64,8 +64,8 @@ Here is a list of all the layers, their source and file format:
 | Zones interdites de vol      | CartoDB                   | GeoJSON     | <https://carto.com/developers/data-services-api/reference/> |
 | Cantons                      | CartoDB                   | GeoJSON     | <https://carto.com/developers/data-services-api/reference/> |
 | Carte des vents              | Swiss Confederation's WMS | png         | <https://api3.geo.admin.ch/api/faq/index.html>              |
-| Intensité des précipitations | OpenWeatherMap            | png         | <https://openweathermap.org/api>                            |
-| Humidité relative            | OpenWeatherMap            | png         | <https://openweathermap.org/api>                            |
+| Intensité des précipitations | OpenWeatherMap            | png         | <https://openweathermap.org/api/weather-map-2>              |
+| Humidité relative            | OpenWeatherMap            | png         | <https://openweathermap.org/api/weather-map-2>              |
 
 ### Additional services
 
