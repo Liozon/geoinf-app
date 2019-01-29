@@ -310,7 +310,11 @@ a:active {
     right: 60px;
     padding: 10px;
     list-style: none;
-    z-index: 1
+    z-index: 1;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-right-style: solid;
+    border-color: #4CAF50;
 }
 
 #legend1 .legend-scale ul li {
@@ -321,7 +325,7 @@ a:active {
     text-align: center;
     font-size: 80%;
     list-style: none;
-    z-index: 1
+    z-index: 1;
 }
 
 #legend1 ul.legend-labels li span {
@@ -329,7 +333,7 @@ a:active {
     float: left;
     height: 15px;
     width: 50px;
-    z-index: 1
+    z-index: 1;
 }
 
 #legend2 {
@@ -340,7 +344,11 @@ a:active {
     right: 60px;
     padding: 10px;
     list-style: none;
-    z-index: 1
+    z-index: 1;
+    border-left-style: solid;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-color: #4CAF50;
 }
 
 #legend2 .legend-scale ul li {
@@ -351,7 +359,7 @@ a:active {
     text-align: center;
     font-size: 80%;
     list-style: none;
-    z-index: 1
+    z-index: 1;
 }
 
 #legend2 ul.legend-labels li span {
@@ -359,5 +367,5 @@ a:active {
     float: left;
     height: 15px;
     width: 50px;
-    z-index: 1
+    z-index: 1;
 }
