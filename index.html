@@ -77,20 +77,33 @@
         Afficher les légendes <input id="legends" type="checkbox" />
       </label>
     </div>
-    <div id="legend1">
+  </span>
+  <div>
+    <div id="legend1" display="none">
       <div class='legend-title'>Niveau d'humidité en %</div>
       <div class='legend-scale'>
         <ul class='legend-labels'>
-          <li><span style='background:#ff1414;'></span>- 10</li>
-          <li><span style='background:#e4d022;'></span>20 - 40</li>
-          <li><span style='background:#47ff56;'></span>40 - 60</li>
-          <li><span style='background:#42e1fd;'></span>60 - 80</li>
-          <li><span style='background:#6613ff;'></span>+ 80</li>
+          <li><span style='background:#f32409;'></span>- 10</li>
+          <li><span style='background:#edfd02;'></span>20 - 40</li>
+          <li><span style='background:#61e179;'></span>40 - 60</li>
+          <li><span style='background:#52b9f7;'></span>60 - 80</li>
+          <li><span style='background:#5667f7;'></span>+ 80</li>
         </ul>
       </div>
-
     </div>
-  </span>
+    <div id="legend2" display="none">
+      <div class='legend-title'>Précipitations en mm</div>
+      <div class='legend-scale'>
+        <ul class='legend-labels'>
+          <li><span style='background:#6994fc;'></span>- 5</li>
+          <li><span style='background:#02c621;'></span>5 - 15</li>
+          <li><span style='background:#daff35;'></span>15 - 25</li>
+          <li><span style='background:#ff6101;'></span>25 - 45</li>
+          <li><span style='background:#fb1403;'></span>+ 45</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.core.js"></script>

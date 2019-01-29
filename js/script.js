@@ -6,8 +6,6 @@ var format = "GeoJSON";
 // Main function
 (function () {
   $("input[type=checkbox]").removeAttr("checked");
-  var legendsButton = document.getElementById("displayLegends");
-  legendsButton.addEventListener("change", displayLegends);
   var inputButton = document.getElementById("searchbox");
   inputButton.addEventListener("click", geocodage);
   var inputText = document.getElementById("adress");
@@ -16,6 +14,8 @@ var format = "GeoJSON";
       geocodage();
     }
   });
+  var legendsButton = document.getElementById("displayLegends");
+  legendsButton.addEventListener("change", displayLegends);
   var view = new ol.View({
     center: ol.proj.transform([8.2, 46.7], "EPSG:4326", "EPSG:3857"),
     zoom: 8.5
@@ -426,7 +426,9 @@ function off() {
 function displayLegends() {
   if ($('#legends').prop("checked")) {
     document.getElementById("legend1").style.display = "block";
+    document.getElementById("legend2").style.display = "block";
   } else {
     document.getElementById("legend1").style.display = "none";
+    document.getElementById("legend2").style.display = "none";
   }
 }

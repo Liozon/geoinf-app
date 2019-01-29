@@ -10,33 +10,6 @@ body {
     overflow: hidden;
 }
 
-#legend1 {
-    display: none;
-    background-color: white;
-    position: absolute;
-    bottom: 20px;
-    right: 60px;
-    padding: 10px;
-    list-style: none;
-}
-
-#legend1 .legend-scale ul li {
-    display: block;
-    float: left;
-    width: 50px;
-    margin-bottom: 6px;
-    text-align: center;
-    font-size: 80%;
-    list-style: none;
-}
-
-#legend1 ul.legend-labels li span {
-    display: block;
-    float: left;
-    height: 15px;
-    width: 50px;
-}
-
 textarea,
 select,
 input,
@@ -156,7 +129,7 @@ input[type=text] {
     /* background-color: rgb(60, 60, 60); */
     background-image: url("../img/tile.png");
     background-repeat: repeat;
-    z-index: 10;
+    z-index: 2000000000;
     cursor: pointer;
 }
 
@@ -325,4 +298,66 @@ a:active {
 .layer-switcher .group.layer-switcher-fold.layer-switcher-close>ul {
     overflow: hidden;
     height: 0;
+}
+
+/* Légendes */
+
+#legend1 {
+    display: none;
+    background-color: white;
+    position: absolute;
+    bottom: 20px;
+    right: 60px;
+    padding: 10px;
+    list-style: none;
+    z-index: 1
+}
+
+#legend1 .legend-scale ul li {
+    display: block;
+    float: left;
+    width: 50px;
+    margin-bottom: 6px;
+    text-align: center;
+    font-size: 80%;
+    list-style: none;
+    z-index: 1
+}
+
+#legend1 ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 15px;
+    width: 50px;
+    z-index: 1
+}
+
+#legend2 {
+    display: none;
+    background-color: white;
+    position: absolute;
+    bottom: 100px;
+    right: 60px;
+    padding: 10px;
+    list-style: none;
+    z-index: 1
+}
+
+#legend2 .legend-scale ul li {
+    display: block;
+    float: left;
+    width: 50px;
+    margin-bottom: 6px;
+    text-align: center;
+    font-size: 80%;
+    list-style: none;
+    z-index: 1
+}
+
+#legend2 ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 15px;
+    width: 50px;
+    z-index: 1
 }
