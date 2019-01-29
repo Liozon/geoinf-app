@@ -159,7 +159,7 @@ Download a copy of this repository [here](https://github.com/Liozon/geoinf-app/a
 
 ### How to run the app on your computer
 
-In order to run this app locally on your computer, you'll need WAMP (or equivalent). You can download WAMP [here](http://www.wampserver.com/en/download-wampserver-64bits/) (for PC) and for Mac OS you can download MAMP [here](https://www.mamp.info/en/downloads/)
+In order to run this app locally on your computer, you'll need WAMP (or equivalent). You can download WAMP [here](http://www.wampserver.com/en/download-wampserver-64bits/) if you're on a PC and MAMP [here](https://www.mamp.info/en/downloads/) if you're on Mac OS
 
 During the programming and tests, this is the version of WAMP and dependencies used:
 
