@@ -21,6 +21,8 @@
     - [Layers](#layers-1)
     - [Additional services](#additional-services)
   - [Installation](#installation)
+    - [Download the repository](#download-the-repository)
+    - [How to run the app on your computer](#how-to-run-the-app-on-your-computer)
     - [Installation in WAMP or MAMP](#installation-in-wamp-or-mamp)
       - [WAMP](#wamp)
       - [MAMP](#mamp)
@@ -151,6 +153,12 @@ Here is a list of all the layers, their source and file format:
 
 ## Installation
 
+### Download the repository
+
+Download a copy of this repository [here](https://github.com/Liozon/geoinf-app/archive/master.zip) and unzip the folder.
+
+### How to run the app on your computer
+
 In order to run this app locally on your computer, you'll need WAMP (or equivalent). You can download WAMP [here](http://www.wampserver.com/en/download-wampserver-64bits/) (for PC) and for Mac OS you can download MAMP [here](https://www.mamp.info/en/downloads/)
 
 During the programming and tests, this is the version of WAMP and dependencies used:
@@ -162,8 +170,6 @@ During the programming and tests, this is the version of WAMP and dependencies u
 | phpMyAdmin   | 4.7.4        |
 | MySQL        | 5.7.19       |
 | MariaDB      | 10.2.8       |
-
-Download a copy of this repository [here](https://github.com/Liozon/geoinf-app/archive/master.zip) and unzip the folder.
 
 ### Installation in WAMP or MAMP
 
