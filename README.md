@@ -168,11 +168,11 @@ Here is a view with all the possible layers activated:
 
 ### Legends
 
-![Legends button](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/all%20layers.png "Legends button")
+![Legends button](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/options.jpg "Legends button")
 
 In addition to the layers, you can display two legends. These legends make it possible to better interpret the "Relative humidity" and "Precipitation intensity" layers.
 
-![All layers activated](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/all%20layers.png "All layers activated")
+![Legends](https://raw.githubusercontent.com/Liozon/geoinf-app/master/screenshots/legends.jpg "Legends")
 
 ### Suggestion
 
