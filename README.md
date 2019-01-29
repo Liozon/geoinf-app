@@ -21,6 +21,9 @@
     - [Layers](#layers-1)
     - [Additional services](#additional-services)
   - [Installation](#installation)
+    - [Installation in WAMP or MAMP](#installation-in-wamp-or-mamp)
+      - [WAMP](#wamp)
+      - [MAMP](#mamp)
   - [API keys](#api-keys)
   - [Suggestions](#suggestions)
 
@@ -159,6 +162,24 @@ During the programming and tests, this is the version of WAMP and dependencies u
 | phpMyAdmin   | 4.7.4        |
 | MySQL        | 5.7.19       |
 | MariaDB      | 10.2.8       |
+
+Download a copy of this repository [here](https://github.com/Liozon/geoinf-app/archive/master.zip) and unzip the folder.
+
+### Installation in WAMP or MAMP
+
+#### WAMP
+
+- Locate the `www` folder of WAMP on your computer. By default, the folder is located at `C:\wamp\www\`
+- Paste the `geoinf-app-master` folder here
+- Them you can launch WAMP
+- Open `localhost/geoinf-app-master` in your favorite browser.
+
+#### MAMP
+
+- Locate the `htdocs` folder of WAMP on your computer. By default, the folder is located at `/Applications/MAMP/htdocs`
+- Paste the `geoinf-app-master` folder here
+- Them you can launch WAMP
+- Open `localhost/geoinf-app-master` in your favorite browser.
 
 ## API keys
 
