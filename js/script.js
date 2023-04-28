@@ -144,10 +144,7 @@ var format = "GeoJSON";
               })
             }),
             source: new ol.source.Vector({
-              url: "https://liozon.carto.com/api/v2/sql?q=select*from%20limites_des_cantons&format=" +
-                format +
-                "&api_key=" +
-                key,
+              url: "/data/limites des cantons.geojson",
               format: new ol.format.GeoJSON()
             })
           }),
@@ -164,11 +161,8 @@ var format = "GeoJSON";
               })
             }),
             source: new ol.source.Vector({
-              url: "https://liozon.carto.com/api/v2/sql?q=select*from%20carte_de_restrictions&format=" +
-                format +
-                "&api_key=" +
-                key,
-              format: new ol.format.GeoJSON()
+              url: "/data/Carte de restrictions.geojson",
+              format: new ol.format.GeoJSON(),
             })
           }),
           new ol.layer.Vector({
@@ -184,11 +178,7 @@ var format = "GeoJSON";
               })
             }),
             source: new ol.source.Vector({
-              projection: "EPSG:4326",
-              url: "https://liozon.carto.com/api/v2/sql?q=select*from%20airports&format=" +
-                format +
-                "&api_key=" +
-                key,
+              url: "/data/airports.geojson",
               format: new ol.format.GeoJSON()
             })
           })
