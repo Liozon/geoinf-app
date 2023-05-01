@@ -353,11 +353,10 @@ var format = "GeoJSON";
   map.addInteraction(selectInteraction);
   selectInteraction.on("select", function (e) {
     if (e.selected.length > 0) {
-      console.log(e.selected[0].values_.UASZoneInfo.zoneAuthority)
-      var restrictionName = e.selected[0].values_.UASZoneInfo.name;
-      var restrictionType = e.selected[0].values_.UASZoneInfo.restriction;
-      var restrictionAuth = e.selected[0].values_.UASZoneInfo.zoneAuthority[0].service + ", " + e.selected[0].values_.UASZoneInfo.zoneAuthority[0].contactName;
-      var restrictionLink = e.selected[0].values_.UASZoneInfo.zoneAuthority[0].siteURL;
+      var restrictionName = e.selected[0].get("name");
+      var restrictionType = e.selected[0].get("restriction");
+      var restrictionAuth = e.selected[0].get("service") + ", " + e.selected[0].get("contactName");
+      var restrictionLink = e.selected[0].get("siteURL");
       var cantonName = e.selected[0].get("NAME");
       var airportName = e.selected[0].get("airport_name");
       var airportType = e.selected[0].get("type");
