@@ -144,7 +144,7 @@ var format = "GeoJSON";
               })
             }),
             source: new ol.source.Vector({
-              url: "/data/limites des cantons.geojson",
+              url: "/data/limites des cantons new.geojson",
               format: new ol.format.GeoJSON()
             })
           }),
@@ -161,7 +161,7 @@ var format = "GeoJSON";
               })
             }),
             source: new ol.source.Vector({
-              url: "/data/Carte de restrictions.geojson",
+              url: "/data/Carte de restrictions new.geojson",
               format: new ol.format.GeoJSON(),
             })
           }),
@@ -353,11 +353,12 @@ var format = "GeoJSON";
   map.addInteraction(selectInteraction);
   selectInteraction.on("select", function (e) {
     if (e.selected.length > 0) {
-      var restrictionName = e.selected[0].get("name_f");
-      var restrictionType = e.selected[0].get("restr_f");
-      var restrictionAuth = e.selected[0].get("appro_f");
-      var restrictionLink = e.selected[0].get("link_f");
-      var cantonName = e.selected[0].get("name");
+      console.log(e.selected[0].values_.UASZoneInfo.zoneAuthority)
+      var restrictionName = e.selected[0].values_.UASZoneInfo.name;
+      var restrictionType = e.selected[0].values_.UASZoneInfo.restriction;
+      var restrictionAuth = e.selected[0].values_.UASZoneInfo.zoneAuthority[0].service + ", " + e.selected[0].values_.UASZoneInfo.zoneAuthority[0].contactName;
+      var restrictionLink = e.selected[0].values_.UASZoneInfo.zoneAuthority[0].siteURL;
+      var cantonName = e.selected[0].get("NAME");
       var airportName = e.selected[0].get("airport_name");
       var airportType = e.selected[0].get("type");
       if (restrictionName) {
